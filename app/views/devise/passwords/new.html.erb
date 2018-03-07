@@ -13,3 +13,48 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<div class="allsignup">
+
+  <div class="signup">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-12 ml-auto mr-auto">
+          <div class="card card-signup">
+            <form class="form" method="" action="">
+              <div class="card-header card-header-primary text-center">
+                <h3>Sign Up</h3>
+                <div class="social-line">
+                  <a href="#" class="btn btn-link btn-just-icon">
+                    <i class="fa fa-facebook-square"></i>
+                  </a>
+                  <a href="#" class="btn btn-link btn-just-icon">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="#" class="btn btn-link btn-just-icon">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </div>
+              </div>
+              <h4 class="text-divider">Renseignez vos informations</h4>
+              <div class="card-body">
+                <span class="bmd-form-group"><div class="input-group">
+                  <%= f.input :email, required: true, autofocus: true %>
+                </div></span>
+
+              </div>
+              <div class="card-footer justify-content-center">
+                <div class="form-actions">
+                  <%= f.button :submit, "Send me reset password instructions" %>
+                </div>
+                <% end %>
+                <%= render "devise/shared/links" %>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
