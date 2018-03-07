@@ -7,11 +7,11 @@
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
 $body-bg:                 $light-gray;
-$font-size-base: 18px;
+$font-size-base: 10px;
 
 // Colors
-$gray-base:       $gray;
-$brand-primary:   $blue;
+$gray-base:       $light-gray;
+$brand-primary:   $gray;
 $brand-success:   $green;
 $brand-info:      $yellow;
 $brand-danger:    $red;
@@ -23,3 +23,23 @@ $border-radius-large: 2px;
 $border-radius-small: 2px;
 
 // Override other variables below!
+
+// Title
+h1 {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
