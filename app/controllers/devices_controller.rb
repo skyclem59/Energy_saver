@@ -1,25 +1,29 @@
 class DevicesController < ApplicationController
+
+
+  before_action :set_device, only: [:show, :edit, :update, :destroy]
+
   def index
-    before_action :set_device, only: [show:, :edit, :update, :destroy]
 
  #  list only the devices of the house vs current user
 
- @devices = Devices.where(house_id: current_user.house.id)
+  @devices = Device.where(house_id: current_user.house.id)
 
-end
+  end
 
-def show
-end
+  def show
+  end
 
-def new
+  def new
   @device = Device.new
-end
+  end
 
-def create
+  def create
   @device = Device.new(device_params)
   @device[:house_id]= current_user.house.id
   if @device.save
-  redirect_to devices_path(@horse)
+    redirect_to devices_path(@horse)
+  end
   end
 
   def edit
@@ -27,12 +31,12 @@ def create
 
   def update
     @device.update(device_params)
-        redirect_to devices_path
+    redirect_to devices_path
   end
 
   def destroy
     @device.destroy
-        redirect_to devices_path
+    redirect_to devices_path
   end
 
   def set_device
