@@ -13,10 +13,15 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <div class="main">
+       <%= render 'shared/navbar' %>
+       <%= render 'shared/flashes' %>
+       <div class="main-content">
+         <div class="content">
+           <%= yield %>
+         </div>
+         <%= render 'shared/footer' %>
+       </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <script src="/assets/js/core/jquery.min.js"></script>
