@@ -19,10 +19,11 @@ class DevicesController < ApplicationController
   end
 
   def create
+
   @device = Device.new(device_params)
   @device[:house_id]= current_user.house.id
   if @device.save
-    redirect_to devices_path(@horse)
+    redirect_to devices_path(@device)
   end
   end
 
