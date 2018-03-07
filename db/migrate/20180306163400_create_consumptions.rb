@@ -1,6 +1,6 @@
 class CreateConsumptions < ActiveRecord::Migration[5.1]
   def change
-    drop_table :consumptions
+
 
         create_table :consumptions do |t|
       t.string :energy
