@@ -8,8 +8,10 @@
 
 def create_base
 
-  Type.delete_all
-  Action.delete_all
+
+  Device.delete_all
+    Action.delete_all
+    Type.delete_all
 
   Brand.delete_all
   House.delete_all
@@ -91,6 +93,15 @@ def create_base
 
 puts "action seed completed"
 
+puts "starting devices seed"
+
+Device.create( name: 'Thermostat Nest', type_id: Type.where("types.name = 'Thermostat'").first.id, house_id: House.first[:id])
+Device.create( name: 'Camera Nest', type_id: Type.where("types.name = 'Thermostat'").first.id, house_id: House.first[:id])
+
+Device.create( name: 'Cuisine', type_id: Type.where("types.name = 'Lampes'").first.id, house_id: House.first[:id])
+Device.create( name: 'Salon', type_id: Type.where("types.name = 'Lampes'").first.id, house_id: House.first[:id])
+
+puts "devices seed completed"
 
 
 end
