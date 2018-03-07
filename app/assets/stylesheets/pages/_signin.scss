@@ -1,0 +1,45 @@
+.card .card-header-primary,
+.card.bg-primary,
+.card.card-rotate.bg-primary .front,
+.card.card-rotate.bg-primary .back {
+    background: linear-gradient(60deg, #3C4858, #3C4858);
+}
+
+.bmd-form-group .checkbox label,
+.bmd-form-group .radio label,
+.bmd-form-group label {
+    font-size: 14px;
+}
+
+.formulaire {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+}
+
+.business {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+  background-color: #3C4858;
+}
+
+.signin {
+  padding: 8%;
+  height: 100vh;
+  width: 50%;
+
+}
+.html {
+  height: 100vh;
+}
+.card-presentation {
+  height: 75%;
+  width: 40%;
+}
+a {
+  font-size: 12px;
+}

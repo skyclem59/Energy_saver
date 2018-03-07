@@ -1,17 +1,121 @@
-<div class="container">  
-  <h2>Log in</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-  <% end %>
+<div class="formulaire">
 
-  <%= render "devise/shared/links" %>
+  <div class="business">
+
+
+
+                    <!-- <div class="card card-presentation">
+                        <h2 class="card-title text-center">Intelligent</h2>
+                        <h2 class="card-title text-center">Simple</h2>
+                        <h2 class="card-title text-center">Inspirant</h2>
+
+
+                                <div class="col-md-auto ml-auto">
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-rose">
+                                          <i class="material-icons">code</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Récupérez vos données </h4>
+                                            <p class="description">
+                                                Grâce aux moniteurs d’énergie ainsi que vos objest connectés, récupérez toutes les informations sur votre habitat d'un point de vue énergétique.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-primary">
+                                          <i class="material-icons">timeline</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Analysez vos données</h4>
+                                            <p class="description">
+                                                Vous savez combien d’énergie vous consommez et vous produisez à tout moment et partout,  pour plus de confort.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="info info-horizontal">
+                                        <div class="icon icon-info">
+                                            <i class="material-icons">group</i>
+                                        </div>
+                                        <div class="description">
+                                            <h4 class="info-title">Agissez sur votre habitat</h4>
+                                            <p class="description">
+                                                Vous avez la possibilité d'interagir avec votre habitat par l'intermédiaire d'objets connectés référencés, et ainsi faire jusqu’à 30 % économie d’énergie durable.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                    </div>
+ -->
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <div class="signin">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-md-10 ml-auto mr-auto">
+            <div class="card card-signup">
+              <form class="form" method="" action="">
+                <div class="card-header card-header-primary text-center">
+                  <h4>Sign In</h4>
+                  <div class="social-line">
+                    <a href="#" class="btn btn-link btn-just-icon">
+                      <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a href="#" class="btn btn-link btn-just-icon">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="btn btn-link btn-just-icon">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                  </div>
+                </div>
+                <p class="text-divider">Or Be Classical</p>
+                <div class="card-body">
+                  <span class="bmd-form-group"><div class="input-group">
+
+                    <%= f.input :email, required: false, autofocus: true %>
+                  </div></span>
+                  <span class="bmd-form-group"><div class="input-group">
+
+                    <%= f.input :password, required: false %>
+                  </div></span>
+
+                  <div class="form-check">
+                      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                  </div>
+
+
+                  <%= render "devise/shared/links" %>
+                </div>
+                <div class="card-footer justify-content-center">
+                  <div class="form-actions">
+                    <%= f.button :submit, "Log in", class: "btn btn-link btn-primary btn-lg" %>
+                  </div>
+                  <% end %>
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
 </div>
