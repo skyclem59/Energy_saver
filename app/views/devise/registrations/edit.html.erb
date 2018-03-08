@@ -1,11 +1,11 @@
-<div class="container">
+<div class="edit">
 
-  <div class="signup">
+  <div class="editform">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
       <div class="row">
-        <div class="col-xs-12 col-sm-4">
+        <div class="col-md-12 ml-auto mr-auto">
           <div class="card card-signup">
             <form class="form" method="" action="">
               <div class="card-header card-header-primary text-center">
@@ -46,10 +46,10 @@
                 <span class="bmd-form-group"><div class="input-group">
                   <%= f.input :password_confirmation, required: false %>
                 </div></span>
-              </div></span>
-              <span class="bmd-form-group"><div class="input-group">
-                <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-              </div></span>
+                </div></span>
+                <span class="bmd-form-group"><div class="input-group">
+                  <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+                </div></span>
 
               <div class="card-footer justify-content-center">
                 <div class="form-actions">
