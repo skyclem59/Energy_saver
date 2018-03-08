@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
+  <div class="row cards">
+      <% @devices.each do |device| %>
+      <div class="col-md-4">
       <div class="card card-nav-tabs">
         <div class="card-header card-header-primary">
           <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
@@ -8,10 +9,7 @@
             <div class="nav-tabs-wrapper">
               <ul class="nav nav-tabs" data-tabs="tabs">
                 <li class="nav-item">
-                  <a class="nav-link active" href="#home" data-toggle="tab">Consommation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#updates" data-toggle="tab">Production</a>
+                  <h4><%= device.name %></h4>
                 </li>
               </ul>
             </div>
@@ -26,19 +24,10 @@
                 Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
               </p>
             </div>
-            <div class="tab-pane" id="messages">
-              <p>
-                Du graphique ou du texte
-              </p>
-            </div>
-            <div class="tab-pane" id="settings">
-              <p>
-                Du graphique ou du texte
-              </p>
-            </div>
           </div>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
