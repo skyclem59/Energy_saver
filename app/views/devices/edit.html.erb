@@ -1,2 +1,15 @@
-<h1>Devices#edit</h1>
-<p>Find me in app/views/devices/edit.html.erb</p>
+<div class="container">
+  <h1>Mettre à jour objet connecté</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+
+    <h2><%=  "#{@device.type.name} #{@device.type.brand.name}"  %></h2>
+
+      <%= simple_form_for (@device) do |f|  %>
+      <%= f.input :name  %>
+      <%= f.button :submit, "Enregistrer", class:"btn btn-success" %>
+      <%= link_to "Retour", devices_path, class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

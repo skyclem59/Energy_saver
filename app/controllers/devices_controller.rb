@@ -23,7 +23,7 @@ class DevicesController < ApplicationController
   @device = Device.new(device_params)
   @device[:house_id]= current_user.house.id
   if @device.save
-    redirect_to devices_path(@device)
+    redirect_to devices_path
   end
   end
 
@@ -41,7 +41,7 @@ class DevicesController < ApplicationController
   end
 
   def set_device
-    @horse = Device.find(params[:id])
+    @device = Device.find(params[:id])
   end
 
   def device_params
