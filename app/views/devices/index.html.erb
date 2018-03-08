@@ -12,9 +12,9 @@
 
   <div class="container">
     <div class="row cards">
-      <%= render "shared/card_thermostat", device: @thermostat %>
-      <%= render "shared/card_camera", device: @camera %>
-      <%= render "shared/card_lights", devices: @light_devices %>
+      <%= render "shared/card_thermostat", device: @thermostat if @thermostat.present? %>
+      <%= render "shared/card_camera", device: @camera if @camera.present? %>
+      <%= render "shared/card_lights", devices: @light_devices if @light_devices.present? %>
     </div>
   </div>
 </div>
