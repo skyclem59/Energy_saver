@@ -1,12 +1,20 @@
 <div class="container">
-  <h1>Modifier la maison</h1>
+  <h1>Gérer ma maison</h1>
   <%= simple_form_for (@house) do |f|  %>
   <%= f.input :name, required: true, autofocus: true  %>
-      <div class="form-actions">
-      <%= f.button :submit, "Valider" %>
-      <%= link_to "Retour", devices_path, class:"btn btn-success" %>
-      </div>
 
+
+  <h3>Mes objets</h3>
+
+  <% @devices = current_user.house.devices %>
+  <%= link_to " Ajouter un objet", new_device_path, class: "glyphicon glyphicon-plus-sign btn btn-default" %>
+
+  <%= render "shared/actions_objects", device: @devices %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Valider" %>
+    <%= link_to "Retour", devices_path, class:"btn btn-success" %>
+  </div>
   <% end %>
-</div>
 
+</div>

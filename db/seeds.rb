@@ -8,7 +8,6 @@
 
 def create_base
 
-  User.delete_all
   Device.delete_all
   Action.delete_all
   Type.delete_all
@@ -102,6 +101,9 @@ Device.create( name: 'Cuisine', type_id: Type.where("types.name = 'Lampes'").fir
 Device.create( name: 'Salon', type_id: Type.where("types.name = 'Lampes'").first.id, house_id: House.first[:id])
 
 puts "devices seed completed"
+
+
+User.update(:house_id => House.first.id)
 
 
 end
