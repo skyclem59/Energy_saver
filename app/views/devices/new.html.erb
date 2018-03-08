@@ -1,11 +1,16 @@
 <div class="container">
   <h1>Ajouter un objet connecté</h1>
   <%= simple_form_for (@device) do |f|  %>
-  <%= f.input :name %>
-  <%= f.input :id, label: "Brand:", collection: Brand.all.collect {|b| [ b.name, b.id ] } %>
-  <%= f.input :type_id, label: "type", collection: Type.all.collect {|t| [ t.name, t.id ] } %>
-  <%= f.button :submit, "Valider", class:"btn btn-success" %>
-  <%= link_to "Retour", devices_path(@device), class:"btn btn-success" %>
+  <%= f.input :name, required: true, autofocus: true  %>
+  <%= f.input :id, label: "Brand:", required: true, collection: Brand.all.collect {|b| [ b.name, b.id ] } %>
+  <%= f.input :type_id, label: "type", required: true, collection: Type.all.collect {|t| [ t.name, t.id ] } %>
+
+
+    <div class="form-actions">
+      <%= f.button :submit, "Valider" %>
+      <%= link_to "Retour", devices_path, class:"btn btn-success" %>
+      </div>
+
   <% end %>
 </div>
 

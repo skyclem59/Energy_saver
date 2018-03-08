@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :actions, only: :index
   resources :brands, only: :index
+  resources :consumptions , only: :show
 
   root to: 'pages#home'
 
