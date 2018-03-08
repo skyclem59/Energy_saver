@@ -1,4 +1,9 @@
 <div class="container">
   <h1>Objets connectés</h1>
-  <%= render "shared/card", device: @devices %>
+    <div class="row">
+      <div class="col-md-4 ">
+        <%= render "shared/card_smappee", device: @devices %>
+      </div>
+    </div>
+  <%= render "shared/card_devices", device: @devices %>
 </div>
