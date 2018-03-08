@@ -12,13 +12,15 @@
           </div>
         </div>
       </div>
-      <div class="card-body ">
+      <div class="card-body">
         <div class="tab-content text-center light">
             <% @light_devices.each do |device| %>
               <%= link_to device_path(device) do %>
                 <div class="tab-pane active " id="profile">
-                  <button class="btn btn-round">
+                  <div class="">
                     <%= device.name %>
+                  </div>
+                  <button class="btn btn-round">
                   </button>
                 </div>
               <% end %>
