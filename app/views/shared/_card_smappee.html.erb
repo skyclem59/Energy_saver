@@ -1,116 +1,39 @@
-<div class="container">
-  <div class="row cards">
-    <div class="col-xs-12 col-sm-4">
-      <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary">
-          <h3>Electricité</h3>
-          <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-          <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-              <ul class="nav nav-tabs" data-tabs="tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#home" data-toggle="tab">Consommation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#updates" data-toggle="tab">Production</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card-body ">
-          <div class="tab-content text-center">
-            <div class="tab-pane active" id="profile">
-              <p>
-                Du graphique ou du texte
-                <br>
-                Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
-              </p>
-            </div>
-            <div class="tab-pane" id="messages">
-              <p>
-                Du graphique ou du texte
-              </p>
-            </div>
-          </div>
+<div class="col-xs-12 col-sm-4">
+  <div class="card card-nav-tabs">
+    <div class="card-header card-header-primary">
+      <h3>Electricité</h3>
+      <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul class="nav nav-tabs" data-tabs="tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home" data-toggle="tab">Consommation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#updates" data-toggle="tab">Production</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-
-    <div class="col-xs-12 col-sm-4">
-      <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary">
-          <h3>Gaz</h3>
-          <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-          <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-              <ul class="nav nav-tabs" data-tabs="tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#home" data-toggle="tab">Consommation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#updates" data-toggle="tab">Production</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <div class="card-body ">
+      <%= link_to device_path(device) do %>
+      <div class="tab-content text-center">
+        <div class="tab-pane active" id="profile">
+          <p>
+            Du graphique ou du texte
+            <br>
+            Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
+          </p>
         </div>
-        <div class="card-body ">
-          <div class="tab-content text-center">
-            <div class="tab-pane active" id="profile">
-              <p>
-                Du graphique ou du texte
-                <br>
-                Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
-              </p>
-            </div>
-            <div class="tab-pane" id="messages">
-              <p>
-                Du graphique ou du texte
-              </p>
-            </div>
-          </div>
+        <div class="tab-pane" id="messages">
+          <p>
+            Du graphique ou du texte
+          </p>
         </div>
       </div>
-    </div>
-
-
-    <div class="col-xs-12 col-sm-4">
-      <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary">
-          <h3>Eau</h3>
-          <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-          <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-              <ul class="nav nav-tabs" data-tabs="tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#home" data-toggle="tab">Consommation</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#updates" data-toggle="tab">Production</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="card-body ">
-          <div class="tab-content text-center">
-            <div class="tab-pane active" id="profile">
-              <p>
-                Du graphique ou du texte
-                <br>
-                Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
-              </p>
-            </div>
-            <div class="tab-pane" id="messages">
-              <p>
-                Du graphique ou du texte
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

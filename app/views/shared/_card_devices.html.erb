@@ -1,33 +1,29 @@
-<div class="container">
-  <div class="row cards">
-      <% @devices.each do |device| %>
-      <div class="col-md-4">
-      <div class="card card-nav-tabs">
-        <div class="card-header card-header-primary">
-          <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-          <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-              <ul class="nav nav-tabs" data-tabs="tabs">
-                <li class="nav-item">
-                  <h4><%= device.name %></h4>
-                </li>
-              </ul>
-            </div>
+<div class="col-md-4">
+  <%= link_to device_path(device) do %>
+    <div class="card card-nav-tabs">
+      <div class="card-header card-header-primary">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item">
+                <h4><%= device.name %></h4>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card-body ">
-          <div class="tab-content text-center">
-            <div class="tab-pane active" id="profile">
-              <p>
-                Du graphique ou du texte
-                <br>
-                Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
-              </p>
-            </div>
+      </div>
+      <div class="card-body ">
+        <div class="tab-content text-center">
+          <div class="tab-pane active" id="profile">
+            <p>
+              Du graphique ou du texte
+              <br>
+              Quidem iis deterritum enim eruditi quidem est est aut fuisset te eruditi ita ne artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
