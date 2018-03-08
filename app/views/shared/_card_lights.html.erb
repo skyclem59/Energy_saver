@@ -13,14 +13,16 @@
         </div>
       </div>
       <div class="card-body ">
-        <div class="tab-content text-center">
-          <div class="tab-pane active" id="profile">
-            <p>
-              <%= link_to device_path(@devices) do %>
-                <%= @devices.name %>
+        <div class="tab-content text-center light">
+            <% @light_devices.each do |device| %>
+              <%= link_to device_path(device) do %>
+                <div class="tab-pane active " id="profile">
+                  <button class="btn btn-round">
+                    <%= device.name %>
+                  </button>
+                </div>
               <% end %>
-            </p>
-          </div>
+            <% end %>
         </div>
       </div>
     </div>
