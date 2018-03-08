@@ -7,7 +7,7 @@
   <h3>Mes objets</h3>
 
   <% @devices = current_user.house.devices %>
-  <%= link_to " Ajouter un objet", new_device_path, class: "glyphicon glyphicon-plus-sign btn btn-default" %>
+  <%= link_to " Ajouter un objet", new_device_path, class: "btn btn-default" %>
 
   <%= render "shared/actions_objects", device: @devices %>
 
