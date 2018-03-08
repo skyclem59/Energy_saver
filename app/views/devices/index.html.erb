@@ -12,15 +12,9 @@
 
   <div class="container">
     <div class="row cards">
-        <% @devices.each do |device| %>
-          <% if device.name == "Thermostat Nest" %>
-            <%= render "shared/card_devices", device: device %>
-            <% elsif device.name == "Camera Nest"%>
-            <%= render "shared/card_devices", device: device %>
-            <% else %>
-            <%= render "shared/card_devices", device: device %>
-            <% end %>
-        <% end %>
+      <%= render "shared/card_thermostat", device: @thermostat %>
+      <%= render "shared/card_camera", device: @camera %>
+      <%= render "shared/card_lights", devices: @light_devices %>
     </div>
   </div>
 </div>

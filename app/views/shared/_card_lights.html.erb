@@ -1,0 +1,27 @@
+<div class="col-md-4">
+    <div class="card card-nav-tabs">
+      <div class="card-header card-header-primary">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item">
+                <h4><%= "Lumière" %></h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card-body ">
+        <div class="tab-content text-center">
+          <div class="tab-pane active" id="profile">
+            <p>
+              <%= link_to device_path(@devices) do %>
+                <%= @devices.name %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
