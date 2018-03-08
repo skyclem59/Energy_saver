@@ -9,12 +9,12 @@
   width: 100vw;
   .main-content {
     background: rgb(236, 236, 236);
-    height: calc(100vh - 0px);
+    height: calc(100vh - 70px);
     width: 100%;
     overflow: scroll;
     overflow-x: hidden;
     .content {
-      min-height: calc(100vh - 70px)
+      min-height: calc(100vh - 110px)
     }
   }
 }
