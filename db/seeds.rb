@@ -8,10 +8,10 @@
 
 def create_base
 
-
+  User.delete_all
   Device.delete_all
-    Action.delete_all
-    Type.delete_all
+  Action.delete_all
+  Type.delete_all
 
   Brand.delete_all
   House.delete_all
@@ -50,45 +50,45 @@ def create_base
 
 # creation camera
 
-  puts "creation type camera"
-  puts "enter user"
-  user = "toto"
-  puts "enter password"
-  pwd = "password"
+puts "creation type camera"
+puts "enter user"
+user = "toto"
+puts "enter password"
+pwd = "password"
 
-  Type.create( name: 'Camera', method:'nest_camera', key_user: user, key_password: pwd, brand_id: Brand.first[:id])
+Type.create( name: 'Camera', method:'nest_camera', key_user: user, key_password: pwd, brand_id: Brand.first[:id])
 
 # creation lampes
 
-  puts "creation type lampes"
-  puts "enter user"
-  user = "toto"
-  puts "enter password"
-  pwd = "password"
-  Type.create( name: 'Lampes', method:'philips_lampes', key_user: user, key_password: pwd, brand_id: Brand.last[:id])
+puts "creation type lampes"
+puts "enter user"
+user = "toto"
+puts "enter password"
+pwd = "password"
+Type.create( name: 'Lampes', method:'philips_lampes', key_user: user, key_password: pwd, brand_id: Brand.last[:id])
 
 
-  puts "type  seed completed"
+puts "type  seed completed"
 
 
-  puts "starting action seed"
+puts "starting action seed"
 
 
 
-  puts "create action on nest thermostat"
+puts "create action on nest thermostat"
 
-  Action.create( name: 'Augmenter température', api_param: 'puts nest.temperature           # => 99.00', type_id:  Type.where("types.name = 'Thermostat'").first.brand_id)
-  Action.create( name: 'Baisser température', api_param: 'puts nest.temperature           # => 00.00', type_id: Type.where("types.name = 'Thermostat'").first.brand_id)
+Action.create( name: 'Augmenter température', api_param: 'puts nest.temperature           # => 99.00', type_id:  Type.where("types.name = 'Thermostat'").first.brand_id)
+Action.create( name: 'Baisser température', api_param: 'puts nest.temperature           # => 00.00', type_id: Type.where("types.name = 'Thermostat'").first.brand_id)
 
-  puts "create action on nest camera"
+puts "create action on nest camera"
 
-  Action.create( name: 'Afficher Camera', api_param: 'je sais pas encore' , type_id: Type.where("types.name = 'Camera'").first.brand_id)
-  Action.create( name: 'Effacer Camera', api_param: 'je sais pas encore' , type_id: Type.where("types.name = 'Camera'").first.brand_id)
+Action.create( name: 'Afficher Camera', api_param: 'je sais pas encore' , type_id: Type.where("types.name = 'Camera'").first.brand_id)
+Action.create( name: 'Effacer Camera', api_param: 'je sais pas encore' , type_id: Type.where("types.name = 'Camera'").first.brand_id)
 
-  puts "create action on philipshue"
+puts "create action on philipshue"
 
-  Action.create( name: 'off', api_param: '  {"on":false}' , type_id: Type.where("types.name = 'Lampes'").first.brand_id)
-  Action.create( name: 'on', api_param: ' {"on":true}' , type_id: Type.where("types.name = 'Lampes'").first.brand_id)
+Action.create( name: 'off', api_param: '  {"on":false}' , type_id: Type.where("types.name = 'Lampes'").first.brand_id)
+Action.create( name: 'on', api_param: ' {"on":true}' , type_id: Type.where("types.name = 'Lampes'").first.brand_id)
 
 
 puts "action seed completed"
@@ -107,34 +107,104 @@ puts "devices seed completed"
 end
 
 
-  def calculate
-
-    base = 1,30 + (rand(0..10)/10)
+def calculate_week
 
 
 
-    if @event_time.hour  >=  6 and @event_time.hour  <  7 and @event_time.min <= 30
-      return base * 1,5
-    elsif @event_time.hour  >= 6 and @event_time.min > 30 and @event_time.hour  <= 8 and  @event_time.min <= 30
-      return base * 2
-    elsif @event_time.hour  >= 8 and @event_time.min > 30 and @event_time.hour  <= 9 and  @event_time.min <= 00
-      return base * 1
-    elsif @event_time.hour  >= 9 and @event_time.min > 00 and @event_time.hour  <= 9 and  @event_time.min <= 59
-      return base * 1,2
-    elsif @event_time.hour  >= 10 and @event_time.min > 00 and @event_time.hour  <= 10 and  @event_time.min <= 30
-      return base * 1,5
-    elsif @event_time.hour  >= 11 and @event_time.min > 00 and @event_time.hour  <= 17 and  @event_time.min <= 30
-      return base * 1
-    elsif @event_time.hour  >= 17 and @event_time.min > 30 and @event_time.hour  <= 18 and  @event_time.min <= 00
-      return base * 1,5
-    elsif @event_time.hour  >= 18 and @event_time.min > 00 and @event_time.hour  <= 22 and  @event_time.min <= 30
-      return base * 2
-    else
-      return base * 1
-    end
+  if @event_time.hour  >=  6 && @event_time.hour  <  7
+
+    return @base * 2  unless   @event_time.min > 30
+    return @base * 1.5
 
   end
 
+  if @event_time.hour  >=  7 && @event_time.hour  <  8
+    return @base * 1.5
+
+  end
+
+  if @event_time.hour  >=  8 && @event_time.hour  <  9
+
+    return @base * 1.5  unless   @event_time.min > 30
+    return @base * 1
+
+  end
+
+  if @event_time.hour  >=  9 && @event_time.hour  <  10
+
+    return @base * 1  unless   @event_time.min > 30
+    return @base * 1.5
+  end
+
+  if @event_time.hour  >=  10 && @event_time.hour  <  17
+
+     return @base * 1
+  end
+  if @event_time.hour  >=  17 && @event_time.hour  <  18
+
+    return @base * 2  unless   @event_time.min > 30
+    return @base * 1
+
+  end
+  if @event_time.hour  >=  18 && @event_time.hour  <  22
+
+    return @base * 2
+
+  end
+
+  if @event_time.hour  >=  22 && @event_time.hour  <  23
+
+    return @base * 1  unless   @event_time.min > 30
+    return @base * 1.5
+
+  end
+
+  return @base * 1
+
+end
+
+def calculate_weekend
+
+
+
+  if @event_time.hour  >=  9 && @event_time.hour  <  10
+
+    return @base * 1.7  unless   @event_time.min > 30
+    return @base * 2
+
+  end
+
+  if @event_time.hour  >=  10 && @event_time.hour  <  23
+
+
+    return @base * 2
+  end
+
+  return @base * 1
+
+end
+
+
+
+def generate_week
+
+  loop do
+
+    if (@event_time.sunday? || @event_time.saturday?)
+
+      Consumption.create( energy: @energy, stamp:@event_time, value: calculate_weekend , alwayson: 12)
+    else
+
+      Consumption.create( energy: @energy, stamp:@event_time, value: calculate_week , alwayson: 12)
+
+    end
+
+    @event_time = @event_time + (60 *5) + rand(0..30).to_i
+
+    break if @event_time > Time.now
+
+  end
+end
 
 
   create_base
@@ -143,7 +213,7 @@ end
   Consumption.delete_all
 
 #  uncomment when ready start_time = Time.now - ((60 * 60 * 24)* 10)
-start_time = Time.now - (36000)
+start_time = Time.now - (1500000)
 
 # create gas datas
 gas_temp_night = 16
@@ -156,22 +226,27 @@ gas_temp_day = 18
 @event_time = start_time
 p "start"
 
-loop do
+p @event_time
 
-  Consumption.create( energy: 'gas', stamp:@event_time, value: 10 , alwayson: 12)
+# gas
 
-  p "done"
-  @event_time = @event_time + (60 *5) + rand(0..30).to_i
+@base = 1.354458 + rand(0..9).to_f/10
+@energy = "gas"
 
-  break if @event_time > Time.now
-end
-
+generate_week
 
 
+@base = 10.354458 + rand(0..9).to_f/10
+@energy = "elec"
 
 
+generate_week
+
+@base = 0.34448 + rand(0..9).to_f/10
+@energy = "water"
 
 
+generate_week
 
 
 
