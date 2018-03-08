@@ -1,9 +1,20 @@
 <div class="container">
-  <h1>Objets connectés</h1>
-    <div class="row">
-      <div class="col-md-4 ">
+  <h1>Dashboard</h1>
+  <div class="container">
+    <div class="row cards">
         <%= render "shared/card_smappee", device: @devices %>
+        <%= render "shared/card_smappee", device: @devices %>
+        <%= render "shared/card_smappee", device: @devices %>
+
       </div>
     </div>
-  <%= render "shared/card_devices", device: @devices %>
+  </div>
+
+  <div class="container">
+    <div class="row cards">
+      <%= render "shared/card_thermostat", device: @thermostat %>
+      <%= render "shared/card_camera", device: @camera %>
+      <%= render "shared/card_lights", devices: @light_devices %>
+    </div>
+  </div>
 </div>

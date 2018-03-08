@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # end
 
   devise_for :users
-  resources :houses, only: [:new, :create, :edit, :update]
+  resources :houses, only: [:show, :new, :create, :edit, :update]
   resources :devices do
     resources :types, only: :index
   end

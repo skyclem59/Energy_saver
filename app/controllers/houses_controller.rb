@@ -1,6 +1,8 @@
 class HousesController < ApplicationController
+  before_action :set_house, only: [:show, :edit, :update]
 
-  before_action :set_house, only: [:edit, :update]
+  def show
+  end
 
   def new
   @house = House.new

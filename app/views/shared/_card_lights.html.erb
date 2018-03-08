@@ -1,0 +1,29 @@
+<div class="col-md-4">
+    <div class="card card-nav-tabs">
+      <div class="card-header card-header-primary">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item">
+                <h4><%= "Lumière" %></h4>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card-body ">
+        <div class="tab-content text-center light">
+            <% @light_devices.each do |device| %>
+              <%= link_to device_path(device) do %>
+                <div class="tab-pane active " id="profile">
+                  <button class="btn btn-round">
+                    <%= device.name %>
+                  </button>
+                </div>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+</div>
