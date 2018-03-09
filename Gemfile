@@ -17,7 +17,8 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-facebook'
 # Objets connectés
-#gem 'lights'
+gem 'lights'
+
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem "chartkick"
