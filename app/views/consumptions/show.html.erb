@@ -1,2 +1,8 @@
-<h1>Cosumptions#Show</h1>
+<h1>Consumptions#Show</h1>
 <p>Find me in app/views/consumptions/show.html.erb</p>
+
+<div class="container">
+  <div id="chart-1" style="height: 140px">
+  <%= line_chart Consumption.all.group_by_day(:stamp).count, discrete: true %>
+  </div>
+</div>

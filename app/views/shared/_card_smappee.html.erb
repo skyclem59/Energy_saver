@@ -21,9 +21,9 @@
       <%= link_to device_path(@devices) do %>
       <div class="tab-content text-center">
         <div class="tab-pane active" id="profile">
-          <p>
-            DU BEAU GRAPHIQUE COMME ON AIME
-          </p>
+          <div id="chart-1" style="height: 140px">
+            <%= line_chart Consumption.all.group_by_day(:stamp).count, discrete: true %>
+          </div>
         </div>
         <div class="tab-pane" id="messages">
           <p>
