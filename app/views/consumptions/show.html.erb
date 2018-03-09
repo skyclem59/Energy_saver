@@ -2,7 +2,34 @@
 <p>Find me in app/views/consumptions/show.html.erb</p>
 
 <div class="container">
-  <div id="chart-1" style="height: 140px">
-  <%= line_chart Consumption.all.group_by_day(:stamp).count, discrete: true %>
+
+  <div id="chart-1" style="height: 200px">
+
+    <%= line_chart [
+      {name: "Electricité", data: @graph_instant_elec},
+      {name: "Solaire", data: @graph_instant_solar}
+    ] %>
+
+  <%  line_chart [{name: "Electricité", data: @graph_instant_elec},
+      {name: "Solaire", data: @graph_instant_solar}] %>
   </div>
+
+  <div id="chart-1" style="height: 200px">
+  <%  line_chart [{name: "Electricité", data: @graph_instant_elec},
+      {name: "Solaire", data: @graph_instant_solar}] %>
+  </div>
+
+
+  <div id="chart-1" style="height: 200px">
+
+   <%= line_chart @graph_instant_gas %>
+
+  </div>
+
+  <div id="chart-1" style="height: 200px">
+
+   <%= line_chart @graph_instant_water %>
+
+  </div>
+
 </div>

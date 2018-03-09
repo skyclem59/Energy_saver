@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 def create_base
-
+  User.delete_all
   Device.delete_all
   Action.delete_all
   Type.delete_all
@@ -76,8 +76,8 @@ puts "starting action seed"
 
 puts "create action on nest thermostat"
 
-Action.create( name: 'Augmenter température', api_param: 'puts nest.temperature           # => 99.00', type_id:  Type.where("types.name = 'Thermostat'").first.brand_id)
-Action.create( name: 'Baisser température', api_param: 'puts nest.temperature           # => 00.00', type_id: Type.where("types.name = 'Thermostat'").first.brand_id)
+Action.create( name: 'Augmenter température', api_param: 'puts nest.temperature           99.00', type_id:  Type.where("types.name = 'Thermostat'").first.brand_id)
+Action.create( name: 'Baisser température', api_param: 'puts nest.temperature            00.00', type_id: Type.where("types.name = 'Thermostat'").first.brand_id)
 
 puts "create action on nest camera"
 
@@ -115,53 +115,56 @@ def calculate_week
 
   if @event_time.hour  >=  6 && @event_time.hour  <  7
 
-    return @base * 2  unless   @event_time.min > 30
-    return @base * 1.5
+    @result  = @base * 1.5
+    @result  =@base * 2  unless   @event_time.min > 30
+
 
   end
 
   if @event_time.hour  >=  7 && @event_time.hour  <  8
-    return @base * 1.5
+    @result =  @base * 1.5
 
   end
 
   if @event_time.hour  >=  8 && @event_time.hour  <  9
 
-    return @base * 1.5  unless   @event_time.min > 30
-    return @base * 1
+    @result = @base * 1
+
+    @result =  @base * 1.5  unless   @event_time.min > 30
 
   end
 
   if @event_time.hour  >=  9 && @event_time.hour  <  10
 
-    return @base * 1  unless   @event_time.min > 30
-    return @base * 1.5
+    @result =  @base * 1  unless   @event_time.min > 30
+    @result =  @base * 1.5
   end
 
   if @event_time.hour  >=  10 && @event_time.hour  <  17
 
-     return @base * 1
+     @result =  @base * 1
   end
   if @event_time.hour  >=  17 && @event_time.hour  <  18
 
-    return @base * 2  unless   @event_time.min > 30
-    return @base * 1
+    @result =  @base * 2  unless   @event_time.min > 30
+    @result =  @base * 1
 
   end
   if @event_time.hour  >=  18 && @event_time.hour  <  22
 
-    return @base * 2
+    @result =  @base * 2
 
   end
 
   if @event_time.hour  >=  22 && @event_time.hour  <  23
 
-    return @base * 1  unless   @event_time.min > 30
-    return @base * 1.5
+    @result =  @base * 1  unless   @event_time.min > 30
+
+    @result =   @base * 1.5
 
   end
 
-  return @base * 1
+  @result =  @base * 1
 
 end
 
@@ -171,18 +174,18 @@ def calculate_weekend
 
   if @event_time.hour  >=  9 && @event_time.hour  <  10
 
-    return @base * 1.7  unless   @event_time.min > 30
-    return @base * 2
+     @result =   @base * 1.7  unless   @event_time.min > 30
+     @result =  @base * 2
 
   end
 
   if @event_time.hour  >=  10 && @event_time.hour  <  23
 
 
-    return @base * 2
+  @result =    @base * 2
   end
 
-  return @base * 1
+  @result =  @base * 1
 
 end
 
@@ -194,10 +197,25 @@ def generate_week
 
     if (@event_time.sunday? || @event_time.saturday?)
 
-      Consumption.create( energy: @energy, stamp:@event_time, value: calculate_weekend , alwayson: 12)
+      @energy = "gas"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      @energy = "elec"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      @energy = "solar"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      @energy = "water"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+
     else
 
-      Consumption.create( energy: @energy, stamp:@event_time, value: calculate_week , alwayson: 12)
+      @energy = "gas"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      @energy = "elec"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      @energy = "solar"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      @energy = "water"
+      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
 
     end
 
@@ -232,23 +250,11 @@ p @event_time
 
 # gas
 
-@base = 1.354458 + rand(0..9).to_f/10
-@energy = "gas"
-
-generate_week
-
-
-@base = 10.354458 + rand(0..9).to_f/10
-@energy = "elec"
+@event_time = start_time
 
 
 generate_week
 
 @base = 0.34448 + rand(0..9).to_f/10
-@energy = "water"
-
-
-generate_week
-
 
 
