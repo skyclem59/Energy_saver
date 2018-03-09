@@ -19,6 +19,9 @@ gem 'webpacker'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
+# Tracker les serveurs
+gem 'appsignal'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
