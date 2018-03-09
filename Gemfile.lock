@@ -205,7 +205,6 @@ PLATFORMS
 DEPENDENCIES
 
   active_median
-=======
   appsignal
 
   autoprefixer-rails
