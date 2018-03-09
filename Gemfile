@@ -22,6 +22,9 @@ gem "chartkick"
 gem 'groupdate'
 gem 'active_median'
 
+# Tracker les serveurs
+gem 'appsignal'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
