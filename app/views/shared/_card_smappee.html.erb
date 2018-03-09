@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-4">
   <div class="card card-nav-tabs">
     <div class="card-header card-header-primary">
-      <h3>Electricité</h3>
+      <h3><%= name %></h3>
       <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
       <div class="nav-tabs-navigation">
         <div class="nav-tabs-wrapper">
@@ -18,11 +18,18 @@
     </div>
 
     <div class="card-body ">
-      <%= link_to device_path(@devices) do %>
+      <%= link_to "#" do %>
       <div class="tab-content text-center">
         <div class="tab-pane active" id="profile">
-          <div id="chart-1" style="height: 140px">
-            <%= line_chart Consumption.all.group_by_day(:stamp).count, discrete: true %>
+          <div id="<namehart-1" style="height: 100px">
+           <% if multiline %>
+            <%= line_chart [
+              {name: "Electricité", data: graph1 },
+              {name: "Solaire", data: graph2}
+            ] %>
+           <% else %>
+           <%= line_chart graph %>
+           <% end %>
           </div>
         </div>
         <div class="tab-pane" id="messages">

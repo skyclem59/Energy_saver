@@ -203,10 +203,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-
   active_median
   appsignal
-
   autoprefixer-rails
   bootstrap-sass (~> 3.3)
   chartkick
