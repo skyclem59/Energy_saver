@@ -1,3 +1,52 @@
-.nav-tabs {
-  border-bottom: none;
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
+
+
+
+.section-signup .card-signup .card-header {
+    width: auto;
+}
+
+.card .card-header {
+    border-radius: 3px;
+    padding: 1rem 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: -30px;
+    border: 0;
+    background: linear-gradient(60deg, #eee, #bdbdbd);
+}
+.card .card-header .title {
+    color: #fff;
+}
+
+
+
+.card .card-header-primary {
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
+}
+
+.card-nav-tabs {
+    margin-top: 45px;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.25rem;
+}
+
+.card-signup .text-divider {
+    margin-top: 30px;
+    margin-bottom: 0px;
+     text-align: center;
+ }
