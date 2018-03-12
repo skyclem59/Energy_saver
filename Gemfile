@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-facebook'
+gem 'oauth2'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
