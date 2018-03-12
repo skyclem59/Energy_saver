@@ -6,8 +6,11 @@
       </div>
     </a>
 
+
     <!-- Links when logged in -->
     <% if user_signed_in? %>
+
+
       <!-- Right Navigation -->
       <div class="navbar-wagon-right hidden-xs hidden-sm">
         <a href="" class="navbar-wagon-item navbar-wagon-link"><%= current_user.house.name%></a>
@@ -28,9 +31,8 @@
           </div>
         </div>
       </div>
-
       <!-- Dropdown appearing on mobile only -->
-      <%= render 'shared/navbar_phone' %>
+      <%#= render 'shared/navbar_phone' %>
 
     <% else %>
       <!-- Login link (when logged out) -->
@@ -38,6 +40,6 @@
       <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Dropdown appearing on mobile only -->
-      <%= render 'shared/navbar_phone' %>
+      <%#= render 'shared/navbar_phone' %>
     <% end %>
 </div>
