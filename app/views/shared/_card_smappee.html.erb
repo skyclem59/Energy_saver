@@ -3,41 +3,20 @@
     <div class="card-header card-header-primary">
       <h3><%= name %></h3>
       <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-      <div class="nav-tabs-navigation">
-        <div class="nav-tabs-wrapper">
-          <ul class="nav nav-tabs" data-tabs="tabs">
-            <li class="nav-item">
-              <a class="nav-link active" href="#home" data-toggle="tab">Consommation</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#updates" data-toggle="tab">Production</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-
-    <div class="card-body ">
+    <div class="card-body" style= "height: 400px">
       <%= link_to "#" do %>
-      <div class="tab-content text-center">
-        <div class="tab-pane active" id="profile">
-          <div id="<namehart-1" style="height: 100px">
+                  <div id="<namehart-1" style="height: 150px">
            <% if multiline %>
-            <%= line_chart [
-              {name: "Electricité", data: graph1 },
-              {name: "Solaire", data: graph2}
-            ] %>
-           <% else %>
-           <%= line_chart graph %>
-           <% end %>
+           <%= line_chart [
+            {name: "Electricité", data: graph1 },
+            {name: "Solaire", data: graph2}
+            ], defer: true %>
+            <% else %>
+            <%= line_chart graph, defer: true %>
+            <% end %>
           </div>
-        </div>
-        <div class="tab-pane" id="messages">
-          <p>
-            Du graphique ou du texte
-          </p>
-        </div>
-      </div>
+
       <% end %>
     </div>
   </div>
