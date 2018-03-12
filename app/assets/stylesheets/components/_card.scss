@@ -34,28 +34,30 @@
 }
 
 .card .card-header-primary {
-    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
 }
 
+// background blanc de la card
 .card-nav-tabs {
-    margin-top: 45px;
+  margin-top: 45px;
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 0.25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.25rem;
 }
 
 .card-signup .text-divider {
-    margin-top: 30px;
-    margin-bottom: 0px;
-     text-align: center;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  text-align: center;
  }
 
  // card smappee
