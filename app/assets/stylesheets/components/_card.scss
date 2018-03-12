@@ -1,3 +1,13 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body {
+  min-height: 140px;
+  height: auto;
+  text-align: center;
+}
 
 .card-header {
     padding: 0.75rem 1.25rem;
@@ -47,3 +57,26 @@
     margin-bottom: 0px;
      text-align: center;
  }
+
+ // card smappee
+.chart {
+  padding: 30px 5px;
+}
+
+#chart-1, #chart-2, #chart-3 {
+  height: 150px !important;
+}
+
+.bottom-chart {
+  text-align: center;
+  padding: 10px;
+}
+
+// card light - camera - thermostat
+.light {
+  display: flex;
+  justify-content: space-around;
+}
+.single-light {
+  padding-top: 45px;
+}

@@ -8,16 +8,17 @@
   justify-content: space-around;
   align-items: center;
 }
+
 .onboarding {
   height: 35vh;
   background-color: #3C4858;
   padding-top: 20px;
-
 }
+
 .mybusiness{
 background-color: #3C4858;
-
 }
+
 .title{
   align-items: center;
   text-align: center;
@@ -32,30 +33,15 @@ background-color: #3C4858;
   font-weight: bold;
   line-height: normal;
   font-size: 24px;
-
   color: #FFFFFF;
-
 }
+
 .card .card-title {
-    margin-top: 0.625rem;
+  margin-top: 0.625rem;
 }
 
 .card .card-title:last-child {
-    margin-bottom: 0;
-}
-
-.btn-home {
-  font-size: 18px;
-  text-align: center;
-  color: #fff;
-  background-color: #F44336;
-  border-color: #F44336;
-  box-shadow: 0 2px 2px 0 rgba(156, 39, 176, .14), 0 3px 1px -2px rgba(156, 39, 176, .2), 0 1px 5px 0 rgba(156, 39, 176, .12);
-  border-radius: 30px;
-  width: 191px;
-  height: 54.99px;
-  vertical-align: middle;
-  padding-top: 15px;
+  margin-bottom: 0;
 }
 
 .info {
