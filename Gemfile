@@ -16,12 +16,16 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-facebook'
+gem 'oauth2'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem "chartkick"
 gem 'groupdate'
 gem 'active_median'
+gem 'rest-client'
+
+gem 'omniauth-nest'
 
 # Tracker les serveurs
 gem 'appsignal'

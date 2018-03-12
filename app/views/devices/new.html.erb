@@ -9,9 +9,14 @@
     <div class="form-actions">
       <%= f.button :submit, "Valider" %>
       <%= link_to "Retour", devices_path, class:"btn btn-success" %>
-      </div>
+    </div>
 
   <% end %>
+
+
+  <div class="container">
+    <%= link_to 'Connecter ma camera nest', "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&state=STATE" %>
+  </div>
 </div>
 
 
