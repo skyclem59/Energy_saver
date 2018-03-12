@@ -267,7 +267,7 @@ end
   Consumption.delete_all
 
 #  uncomment when ready start_time = Time.now - ((60 * 60 * 24)* 10)
-start_time = Time.now - 2.days
+start_time = Time.now - 350.days
 
 
 # create gas datas
