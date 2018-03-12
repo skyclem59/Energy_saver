@@ -261,7 +261,7 @@ def generate_week
 end
 
 
-  # create_base
+  # create_base uncomment
 
 
   Consumption.delete_all
