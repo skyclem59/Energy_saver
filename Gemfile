@@ -23,6 +23,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem "chartkick"
 gem 'groupdate'
 gem 'active_median'
+gem 'rest-client'
 
 # Tracker les serveurs
 gem 'appsignal'
