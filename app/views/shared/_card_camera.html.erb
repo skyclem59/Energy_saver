@@ -2,23 +2,10 @@
   <%= link_to device_path(device) do %>
     <div class="card card-nav-tabs">
       <div class="card-header card-header-primary">
-        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-        <div class="nav-tabs-navigation">
-          <div class="nav-tabs-wrapper">
-            <ul class="nav nav-tabs" data-tabs="tabs">
-              <li class="nav-item">
-                <h4><%= device.name %></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <h4><%= device.name %></h4>
       </div>
-      <div class="card-body ">
-        <div class="tab-content text-center">
-          <div class="tab-pane active" id="profile">
-            <%= link_to 'Regarder', actions_path, class:'btn btn-default' %>
-          </div>
-        </div>
+      <div class="card-body align">
+        <%= link_to 'Regarder', actions_path, class:'btn btn-default' %>
       </div>
     </div>
   <% end %>

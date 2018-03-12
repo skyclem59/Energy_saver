@@ -4,17 +4,17 @@
 }
 
 .card-body {
+  min-height: 80px;
   height: auto;
+  text-align: center;
 }
 
 .light {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  
 }
 
-.btn-round {
-  border-radius: 50% !important;
-  width: 50px !important;
-  height: 50px !important;
+.align {
+  align-items: center;
 }
