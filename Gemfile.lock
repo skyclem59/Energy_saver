@@ -120,6 +120,9 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (4.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-nest (1.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
@@ -251,6 +254,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   oauth2
   omniauth-facebook
+  omniauth-nest
   pg (~> 0.21)
   pry-byebug
   pry-rails

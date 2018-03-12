@@ -25,6 +25,8 @@ gem 'groupdate'
 gem 'active_median'
 gem 'rest-client'
 
+gem 'omniauth-nest'
+
 # Tracker les serveurs
 gem 'appsignal'
 
