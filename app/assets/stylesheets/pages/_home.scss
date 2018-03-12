@@ -1,19 +1,30 @@
 // Specific CSS for your home-page
 .home-page {
-  height: 100vh;
+  height: 65vh;
   background: url(asset-path('bg')), #C4C4C4;
   background-position: center;
   background-size: cover;
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.onboarding {
+  height: 35vh;
+  background-color: #3C4858;
+  padding-top: 20px;
+
+}
+.mybusiness{
+background-color: #3C4858;
 
 }
 .title{
   align-items: center;
   text-align: center;
 }
-
+h3 {
+  margin: 0;
+}
 .brand{
   position: absolute;
   left: 20px;
@@ -26,6 +37,13 @@
 
   color: #FFFFFF;
 
+}
+.card .card-title {
+    margin-top: 0.625rem;
+}
+
+.card .card-title:last-child {
+    margin-bottom: 0;
 }
 
 h1 {
