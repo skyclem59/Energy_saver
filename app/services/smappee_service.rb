@@ -9,12 +9,10 @@
 # # response = token.get('https://app1pub.smappee.net/dev/v1/oauth2/token')
 
 
-require 'rest-client'
-
-url = 'https://app1pub.smappee.net/dev/v1/oauth2/token'
-
-response = RestClient.post(url, { client_id: '', client_secret: ''}, headers={})
-
-p response
-
-# TODO
+# require 'rest-client'
+#
+# url = 'https://app1pub.smappee.net/dev/v1/oauth2/token'
+#
+# response = RestClient.post(url, { client_id: '', client_secret: ''}, headers={})
+#
+# p response
