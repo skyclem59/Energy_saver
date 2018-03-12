@@ -33,28 +33,33 @@
                           <%= f.input :avatar %>
                         </div>
                       </span>
+                      
                       <span class="bmd-form-group">
                         <div class="input-group">
                           <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
                         </div>
                       </span>
+
                       <span class="bmd-form-group">
                         <div class="input-group">
                           <%= f.input :password_confirmation, required: false %>
                         </div>
                       </span>
-                    </div>
+
                     <span class="bmd-form-group">
                       <div class="input-group">
                         <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
                       </div>
                     </span>
+
                     <div class="card-footer justify-content-center">
                       <div class="form-actions">
                         <%= f.button :submit, "Valider" %>
                         <%= link_to "Retour", :back, class: "btn btn-success" %>
                       </div>
                     </div>
+
+                  </div>
                     <h3>Cancel my account</h3>
                     <div class="inline">
                       <p>Unhappy?</p>
