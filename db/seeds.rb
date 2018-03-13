@@ -198,6 +198,40 @@ def generate_water
 
   end
 
+  def generate_solar
+
+    if @event_time.hour  >=  6 && @event_time.hour  <  9
+      @solar = @solar * 1.05 + rand(0.01..1.15)
+
+    end
+
+    if @event_time.hour  >=  10 && @event_time.hour  <  12
+      @solar = @solar * 1.10 + rand(-1.01..1.15)
+
+    end
+
+    if @event_time.hour  >=  13 && @event_time.hour  <  15
+      @solar = @solar * 1.15 + rand(1.01..1.15)
+
+    end
+
+    if @event_time.hour  >=  16 && @event_time.hour  <  17
+      @solar = @solar * 1.00003 + rand(-1.0001..1.015)
+
+    end
+
+    if @event_time.hour  >=  17 && @event_time.hour  <  19
+      @solar = @solar * 1.00030 + rand(-1.01..1.15)
+          end
+
+      @energy = "solar"
+      Consumption.create( energy: @energy, stamp:@event_time, value: @solar , alwayson: 12)
+
+      return
+
+    end
+
+
   if @event_time.hour  >=  21 && @event_time.hour  <  23
 
     @base = 0.23 + rand(0.05.. 0.09)
@@ -210,8 +244,6 @@ def generate_water
     @energy = "water"
     Consumption.create( energy: @energy, stamp:@event_time, value: 0 , alwayson: 12)
 end
-
-
 
 
 def generate_week
@@ -249,6 +281,8 @@ def generate_week
 
       generate_water
 
+      @solar = 1
+      generate_solar
 
 
     end
@@ -261,13 +295,13 @@ def generate_week
 end
 
 
-  # create_base
+  # create_base uncomment
 
 
   Consumption.delete_all
 
 #  uncomment when ready start_time = Time.now - ((60 * 60 * 24)* 10)
-start_time = Time.now - 350.days
+start_time = Time.now - 15.days
 
 
 # create gas datas
