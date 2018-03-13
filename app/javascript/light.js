@@ -7,8 +7,6 @@ Array.from(buttons).forEach((b) => {
 
  // add event on each button
 
- console.log(b)
-
  b.addEventListener("click", (event) => {
    //Button.classList.add("blue");
 
