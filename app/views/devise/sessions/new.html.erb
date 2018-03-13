@@ -5,7 +5,7 @@
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <div class="row">
-          <div class="col-md-10 ml-auto mr-auto">
+          <div class="col-xs-12 col-sm-12">
             <div class="card card-signup">
               <form class="form" method="" action="">
                 <div class="card-header card-header-primary ">
@@ -22,12 +22,12 @@
                 </div>
                 <h4>Or Be Classical</h4>
                 <div class="card-body">
-                  <span class="bmd-form-group"><div class="input-group">
+                  <div class="input">
                   <%= f.input :email, required: false, autofocus: true %>
-                  </div></span>
-                  <span class="bmd-form-group"><div class="input-group">
+                  </div>
+                  <div class="input">
                     <%= f.input :password, required: false %>
-                  </div></span>
+                  </div>
                   <div class="form-check">
                       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
                   </div>

@@ -4,14 +4,14 @@
       <h3><%= name %></h3>
     </div>
     <div class="card-body">
-      <div class="chart">
+      <div class="chart smappee">
         <% if multiline %>
           <%= line_chart [
           {name: "Electricité", data: graph1 },
           {name: "Solaire", data: graph2}
-          ], defer: true, class: "chartsize", height: "150px", width: "210px", points: false, refresh: 60 %>
+          ], defer: true, class: "chartsize", height: "150px", width: "210px", points: false %>
         <% else %>
-          <%= line_chart graph, defer: true, class: "chartsize", height: "150px", width: "210px", points: false, refresh: 60%>
+          <%= line_chart graph, defer: true, class: "chartsize", height: "150px", width: "210px", points: false %>
         <% end %>
       </div>
     </div>
