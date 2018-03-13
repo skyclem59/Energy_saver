@@ -1,101 +1,74 @@
 
 <div class="container">
   <h1>Historique de consommation & production</h1>
-  <div id="chart-1" style="height: 800px">
+  <div class="col-xs-12 col-md-12">
+    <!-- Boutons -->
+    <div class="inline text-right">
+      <% @d = "day" %>
+      <% @w = "week" %>
+      <% @m = "month" %>
+      <% @y = "year" %>
 
-    <% if @period == "d" %>
+      <!-- <% if @period == "d" %>
+      <% @style = "color: red;" %>
+      <% end %> -->
+      <!-- <%= link_to "Jour  ", "consumption_path(#{@d}) ", class:"btn", style: "#{@style}" %> -->
+      <%= link_to "Jour", "consumption_path(#{@d}) ", type:"button", class:"btn btn-primary" %>
 
-    <%= line_chart [
-     {name: "Electricity", data: @graph_day_elec.group_by_hour(:stamp).sum(:value)},
-     {name: "Solar", data: @graph_day_solar.group_by_hour(:stamp).sum(:value)},
-     {name: "Gas", data: @graph_day_gas.group_by_hour(:stamp).sum(:value)},
-     {name: "Water", data: @graph_day_water.group_by_hour(:stamp).sum(:value)}
+      <!-- <% if @period == "w" %>
+      <% @style = "color: red;" %>
+      <% end %> -->
+      <!-- <%= link_to "Semaine ", "consumption_path(#{@w})", class:"btn", style: "#{@style}"%> -->
+      <%= link_to "Semaine", "consumption_path(#{@w}) ", type:"button", class:"btn btn-primary" %>
 
-     ] , defer: true%>
+      <!-- <% if @period == "m" %>
+      <%  @style = "color: red;" %>
+      <% end %> -->
 
-     <% elsif @period == "w" %>
+      <!-- <%= link_to "Mois", "consumption_path(#{@m})", class:"btn", style: "#{@style}" %> -->
+      <%= link_to "Mois", "consumption_path(#{@m}) ", type:"button", class:"btn btn-primary" %>
 
-     <%= line_chart [
-      {name: "Electricity", data: @graph_week_elec.group_by_day(:stamp).sum(:value), discrete: true },
-      {name: "Solar", data: @graph_week_solar.group_by_day(:stamp).sum(:value), discrete: true },
-      {name: "Gas", data: @graph_week_gas.group_by_day(:stamp).sum(:value), discrete: true },
-      {name: "Water", data: @graph_week_water.group_by_day(:stamp).sum(:value), discrete: true }
+      <!-- <% if @period == "y" %>
+      <%  @style = "color: red;" %>
+      <%  end %> -->
+      <!-- <%= link_to "Année ", "consumption_path(#{@y})", class:"btn", style: "#{@style}" %> -->
+      <%= link_to "Année", "consumption_path(#{@y}) ", type:"button", class:"btn btn-primary" %>
+    </div>
 
-      ] , defer: true%>
+    <!-- Graphique -->
+    <div class="chart">
+      <% if @period == "d" %>
+        <%= line_chart [
+          {name: "Electricité", data: @graph_day_elec.group_by_hour(:stamp).sum(:value)},
+          {name: "Solaire", data: @graph_day_solar.group_by_hour(:stamp).sum(:value)},
+          {name: "Gaz", data: @graph_day_gas.group_by_hour(:stamp).sum(:value)},
+          {name: "Eau", data: @graph_day_water.group_by_hour(:stamp).sum(:value)}
+          ] , defer: true, xtitle: "Jour", refresh: 60 %>
+
+      <% elsif @period == "w" %>
+        <%= line_chart [
+          {name: "Electricité", data: @graph_week_elec.group_by_day(:stamp).sum(:value), discrete: true },
+          {name: "Solaire", data: @graph_week_solar.group_by_day(:stamp).sum(:value), discrete: true },
+          {name: "Gaz", data: @graph_week_gas.group_by_day(:stamp).sum(:value), discrete: true },
+          {name: "Eau", data: @graph_week_water.group_by_day(:stamp).sum(:value), discrete: true }
+          ] , defer: true, xtitle: "Semaine"%>
 
       <% elsif @period == "m" %>
+        <%= line_chart [
+          {name: "Electricité", data: @graph_month_elec.group_by_week(:stamp).sum(:value)},
+          {name: "Solaire", data: @graph_month_solar.group_by_week(:stamp).sum(:value)},
+          {name: "Gaz", data: @graph_month_gas.group_by_week(:stamp).sum(:value)},
+          {name: "Eau", data: @graph_month_water.group_by_week(:stamp).sum(:value)}
+          ] , defer: true, xtitle: "Mois"%>
 
-      <%= line_chart [
-       {name: "Electricity", data: @graph_week_elec.group_by_week(:stamp).sum(:value)},
-       {name: "Solar", data: @graph_week_solar.group_by_week(:stamp).sum(:value)},
-       {name: "Gas", data: @graph_week_gas.group_by_week(:stamp).sum(:value)},
-       {name: "Water", data: @graph_week_water.group_by_week(:stamp).sum(:value)}
-
-       ] , defer: true%>
-
-       <% elsif @period == "y" %>
-
-       <%= line_chart [
-        {name: "Electricity", data: @graph_year_elec.group_by_month(:stamp).sum(:value)},
-        {name: "Solar", data: @graph_year_solar.group_by_month(:stamp).sum(:value)},
-        {name: "Gas", data: @graph_year_gas.group_by_month(:stamp).sum(:value)},
-        {name: "Water", data: @graph_year_water.group_by_month(:stamp).sum(:value)}
-
-        ] , defer: true%>
-
-
-        <% else %>
-        <% end %>
-
-
-      </div>
-
-
-      <h3 style = "color:black">
-
-        <!-- buton color change depending on the period -->
-
-
-
-        <% @d = "day" %>
-        <% @w = "week" %>
-        <% @m = "month" %>
-        <% @y = "year" %>
-
-        <% @style = "color: black;" %>
-
-        <% if @period == "d" %>
-        <% @style = "color: red;" %>
-        <% end %>
-
-        <%= link_to "Day  ", "consumption_path(#{@d}) ", class:"btn", style: "#{@style}" %>
-
-        <% @style = "color: black;" %>
-
-        <% if @period == "w" %>
-        <% @style = "color: red;" %>
-        <% end %>
-
-        <%= link_to "Week ", "consumption_path(#{@w})", class:"btn", style: "#{@style}"%>
-
-        <% @style = "color: black;" %>
-
-        <% if @period == "m" %>
-        <%  @style = "color: red;" %>
-        <% end %>
-
-        <%= link_to "Month", "consumption_path(#{@m})", class:"btn", style: "#{@style}" %>
-
-        <% @style = "color: black;" %>
-
-        <% if @period == "y" %>
-        <%  @style = "color: red;" %>
-        <%  end %>
-        <%= link_to "Year ", "consumption_path(#{@y})", class:"btn", style: "#{@style}" %>
-
-
-      </h3>
-
-
-
+      <% elsif @period == "y" %>
+        <%= line_chart [
+          {name: "Electricité", data: @graph_year_elec.group_by_month(:stamp).sum(:value)},
+          {name: "Solaire", data: @graph_year_solar.group_by_month(:stamp).sum(:value)},
+          {name: "Gaz", data: @graph_year_gas.group_by_month(:stamp).sum(:value)},
+          {name: "Eau", data: @graph_year_water.group_by_month(:stamp).sum(:value)}
+          ] , defer: true, xtitle: "Année"%>
+      <% end %>
     </div>
+  </div>
+</div>
