@@ -2,18 +2,21 @@
   <h1>Dashboard</h1>
   <div class="container">
     <div class="row cards">
-      <%= render "shared/card_smappee", graph1: @graph_instant_elec, graph2: @graph_instant_solar, name:"Electricité", multiline: true  %>
-      <%= render "shared/card_smappee", graph: @graph_instant_gas, name:"Gas", multiline: false %>
-      <%= render "shared/card_smappee", graph: @graph_instant_water, name:"Water", multiline: false %>
+      <div class="col-xs-12 col-md-4">
+        <%= render "shared/card_smappee", graph1: @graph_instant_elec, graph2: @graph_instant_solar, name:"Electricité", multiline: true  %>
+        <%= render "shared/card_smappee", graph: @graph_instant_gas, name:"Gas", multiline: false %>
+        <%= render "shared/card_smappee", graph: @graph_instant_water, name:"Water", multiline: false %>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row cards">
-    <%= render "shared/card_thermostat", device: @thermostat if @thermostat.present? %>
-    <%= render "shared/card_camera", device: @camera if @camera.present? %>
-    <%= render "shared/card_lights", devices: @light_devices if @light_devices.present? %>
+    <div class="col-xs-12 col-md-4">
+      <%= render "shared/card_thermostat", device: @thermostat if @thermostat.present? %>
+      <%= render "shared/card_camera", device: @camera if @camera.present? %>
+      <%= render "shared/card_lights", devices: @light_devices if @light_devices.present? %>
+    </div>
   </div>
 </div>
-
