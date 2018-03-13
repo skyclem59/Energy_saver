@@ -1,49 +1,28 @@
 
 <div class="container">
   <h1>Historique de consommation & production</h1>
-  <div class="col-xs-12 col-md-12">
+  <div class="col-xs-12 col-md-12 big-chart">
     <!-- Boutons -->
-    <div class="inline text-right">
+    <div class="inline text-right top-btn">
       <% @d = "day" %>
       <% @w = "week" %>
       <% @m = "month" %>
       <% @y = "year" %>
-
-      <!-- <% if @period == "d" %>
-      <% @style = "color: red;" %>
-      <% end %> -->
-      <!-- <%= link_to "Jour  ", "consumption_path(#{@d}) ", class:"btn", style: "#{@style}" %> -->
-      <%= link_to "Jour", "consumption_path(#{@d}) ", type:"button", class:"btn btn-primary" %>
-
-      <!-- <% if @period == "w" %>
-      <% @style = "color: red;" %>
-      <% end %> -->
-      <!-- <%= link_to "Semaine ", "consumption_path(#{@w})", class:"btn", style: "#{@style}"%> -->
-      <%= link_to "Semaine", "consumption_path(#{@w}) ", type:"button", class:"btn btn-primary" %>
-
-      <!-- <% if @period == "m" %>
-      <%  @style = "color: red;" %>
-      <% end %> -->
-
-      <!-- <%= link_to "Mois", "consumption_path(#{@m})", class:"btn", style: "#{@style}" %> -->
-      <%= link_to "Mois", "consumption_path(#{@m}) ", type:"button", class:"btn btn-primary" %>
-
-      <!-- <% if @period == "y" %>
-      <%  @style = "color: red;" %>
-      <%  end %> -->
-      <!-- <%= link_to "Année ", "consumption_path(#{@y})", class:"btn", style: "#{@style}" %> -->
-      <%= link_to "Année", "consumption_path(#{@y}) ", type:"button", class:"btn btn-primary" %>
+      <%= link_to "Jour", "consumption_path(#{@d}) ", type:"button", class:"btn btn-primary single-btn" %>
+      <%= link_to "Semaine", "consumption_path(#{@w}) ", type:"button", class:"btn btn-primary single-btn" %>
+      <%= link_to "Mois", "consumption_path(#{@m}) ", type:"button", class:"btn btn-primary single-btn" %>
+      <%= link_to "Année", "consumption_path(#{@y}) ", type:"button", class:"btn btn-primary single-btn" %>
     </div>
 
     <!-- Graphique -->
-    <div class="chart">
+    <div class="">
       <% if @period == "d" %>
         <%= line_chart [
-          {name: "Electricité", data: @graph_day_elec.group_by_hour(:stamp).sum(:value)},
-          {name: "Solaire", data: @graph_day_solar.group_by_hour(:stamp).sum(:value)},
-          {name: "Gaz", data: @graph_day_gas.group_by_hour(:stamp).sum(:value)},
-          {name: "Eau", data: @graph_day_water.group_by_hour(:stamp).sum(:value)}
-          ] , defer: true, xtitle: "Jour", refresh: 60 %>
+          {name: "Electricité (W)", data: @graph_day_elec.group_by_hour(:stamp).sum(:value)},
+          {name: "Solaire (W)", data: @graph_day_solar.group_by_hour(:stamp).sum(:value)},
+          {name: "Gaz (dm3/s)", data: @graph_day_gas.group_by_hour(:stamp).sum(:value)},
+          {name: "Eau (L/s)", data: @graph_day_water.group_by_hour(:stamp).sum(:value)}
+          ] , defer: true, xtitle: l(Time.now, format: "%m/%d/%Y"), refresh: 60, points: false, style: "background-color: black;" %>
 
       <% elsif @period == "w" %>
         <%= line_chart [
@@ -51,7 +30,7 @@
           {name: "Solaire", data: @graph_week_solar.group_by_day(:stamp).sum(:value), discrete: true },
           {name: "Gaz", data: @graph_week_gas.group_by_day(:stamp).sum(:value), discrete: true },
           {name: "Eau", data: @graph_week_water.group_by_day(:stamp).sum(:value), discrete: true }
-          ] , defer: true, xtitle: "Semaine"%>
+          ] , defer: true, xtitle: "Week #{l Date.today, format: "%W"}", points: false %>
 
       <% elsif @period == "m" %>
         <%= line_chart [
@@ -59,7 +38,7 @@
           {name: "Solaire", data: @graph_month_solar.group_by_week(:stamp).sum(:value)},
           {name: "Gaz", data: @graph_month_gas.group_by_week(:stamp).sum(:value)},
           {name: "Eau", data: @graph_month_water.group_by_week(:stamp).sum(:value)}
-          ] , defer: true, xtitle: "Mois"%>
+          ] , defer: true, xtitle: "#{l Date.today, format: "%B"}", points: false %>
 
       <% elsif @period == "y" %>
         <%= line_chart [
@@ -67,7 +46,7 @@
           {name: "Solaire", data: @graph_year_solar.group_by_month(:stamp).sum(:value)},
           {name: "Gaz", data: @graph_year_gas.group_by_month(:stamp).sum(:value)},
           {name: "Eau", data: @graph_year_water.group_by_month(:stamp).sum(:value)}
-          ] , defer: true, xtitle: "Année"%>
+          ] , defer: true, xtitle: "#{l Date.today, format: "%Y"}", points: false %>
       <% end %>
     </div>
   </div>
