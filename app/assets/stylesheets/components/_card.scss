@@ -3,9 +3,19 @@
   justify-content: space-between;
 }
 
+.card-signup{
+    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
+}
+
 .card-body {
   min-height: 140px;
   height: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.card-footer a {
+  color: #3C4858;
   text-align: center;
 }
 
@@ -62,11 +72,9 @@
 
  // card smappee
 .chart {
+  width: auto;
   padding: 30px 5px;
-}
-
-#chart-1, #chart-2, #chart-3 {
-  height: 150px !important;
+  text-align: center;
 }
 
 .bottom-chart {

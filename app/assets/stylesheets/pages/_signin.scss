@@ -1,47 +1,54 @@
-.card .card-header-primary,
-.card.bg-primary,
-.card.card-rotate.bg-primary .front,
-.card.card-rotate.bg-primary .back {
-    background: linear-gradient(60deg, #3C4858, #3C4858);
-}
-
-.bmd-form-group .checkbox label,
-.bmd-form-group .radio label,
-.bmd-form-group label {
-    font-size: 14px;
-}
-
 .formulaire {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   height: calc(100vh - 110px);
 }
 
-.business {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex: 0 50%;
-  background-color: #3C4858;
-  height: 100%;
-}
-
 .signin {
-  flex: 0 50%;
+  // flex: 0 50%;
   padding: 40px;
 }
-.html {
-  height: 100vh;
+
+.card .card-header-primary {
+    background: linear-gradient(60deg, #3C4858, #3C4858);
 }
-.card-presentation {
-  margin: 10px 70px;
-  padding: 20px;
+
+.social-line {
+  text-align: center;
+  font-size: 18px;
+}
+.card-signup h4 {
+  color: #3C4858;
+  font-weight: 100;
+  font-size: 18px;
+  text-align: center;
 
 }
+
+
+.card-body {
+  padding: 10px;
+}
+
+.card-footer {
+  align-items: center;
+  padding: 10px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 a {
   font-size: 12px;
+  color: white;
 }
-
+.card-body a {
+  color: #3C4858;
+}
 
 // Mobile & tablet
 @media (max-width : 768px) {
