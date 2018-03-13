@@ -17,6 +17,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-facebook'
 gem 'oauth2'
+gem 'rails-i18n', '5.0.3'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'

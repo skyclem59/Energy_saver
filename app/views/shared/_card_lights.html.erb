@@ -5,12 +5,12 @@
     </div>
     <div class="card-body light align">
       <% @light_devices.each do |device| %>
-      <%= link_to "#" do %>
-      <div class="single-light">
-        <%= device.name %>
-      </div>
-      <button id="<%= device.name.delete(' ') %>" type="button" class="btn btn-primary btn-round"></button>
-      <% end %>
+       <%= link_to "#" do %>
+        <div class="">
+         <%= device.name %>
+        </div>
+        <button id="<%= device.name.delete(' ') %>" type="button" class="btn btn-primary btn-round"></button>
+       <% end %>
       <% end %>
     </div>
   </div>

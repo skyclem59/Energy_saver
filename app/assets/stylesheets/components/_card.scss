@@ -12,6 +12,11 @@
   height: auto;
   text-align: center;
   align-items: center;
+  .smappee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .card-footer a {
@@ -86,7 +91,4 @@
 .light {
   display: flex;
   justify-content: space-around;
-}
-.single-light {
-  padding-top: 45px;
 }
