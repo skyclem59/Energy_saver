@@ -5,3 +5,4 @@
 import Chart from "chart.js";
  window.Chart = Chart;
 import '../light.js';
+import '../thermostat.js';
