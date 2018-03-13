@@ -9,9 +9,9 @@
           <%= line_chart [
           {name: "Electricité", data: graph1 },
           {name: "Solaire", data: graph2}
-          ], defer: true, class: "chartsize"%>
+          ], defer: true, class: "chartsize", height: "150px" %>
         <% else %>
-          <%= line_chart graph, defer: true, class: "chartsize"%>
+          <%= line_chart graph, defer: true, class: "chartsize", height: "150px" %>
         <% end %>
       </div>
     </div>
