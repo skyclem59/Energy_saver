@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :brands, only: :index
   resources :consumptions , only: :show
 
+  scope '(:locale)', locale: /fr/ do
   root to: 'pages#home'
 end
