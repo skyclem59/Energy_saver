@@ -4,7 +4,7 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <div class="row">
-          <div class="col-md-10 ml-auto mr-auto">
+          <div class="col-xs-12 col-sm-12">
             <div class="card card-signup">
               <form class="form" method="" action="">
                 <div class="card-header card-header-primary ">
@@ -12,59 +12,56 @@
                 </div>
                 <h4>Renseignez vos informations</h4>
                 <div class="card-body">
-                  <span class="bmd-form-group">
-                    <div class="input-group">
+
+                    <div class="input">
                       <%= f.input :email, required: true, autofocus: true %>
                       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                       <% end %>
-                      <span class="bmd-form-group">
-                        <div class="input-group">
+                    </div>
+                        <div class="input">
                           <%= f.input :first_name %>
                         </div>
-                      </span>
-                      <span class="bmd-form-group">
-                        <div class="input-group">
+
+                        <div class="input">
                           <%= f.input :last_name %>
                         </div>
-                      </span>
-                      <span class="bmd-form-group">
-                        <div class="input-group">
+
+
+                        <div class="input">
                           <%= f.input :avatar %>
                         </div>
-                      </span>
 
-                      <span class="bmd-form-group">
-                        <div class="input-group">
+
+
+                        <div class="input">
                           <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
                         </div>
-                      </span>
 
-                      <span class="bmd-form-group">
-                        <div class="input-group">
+
+
+                        <div class="input">
                           <%= f.input :password_confirmation, required: false %>
                         </div>
-                      </span>
 
-                    <span class="bmd-form-group">
-                      <div class="input-group">
+
+
+                      <div class="input">
                         <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
                       </div>
-                    </span>
+
 
                     <div class="card-footer">
                       <div class="form-actions">
-                        <%= f.button :submit, "Valider" %>
-                        <%= link_to "Retour", :back, class: "btn btn-success" %>
+                        <%= f.button :submit, "Valider", class:'btn-primary' %>
+                        
                       </div>
                     </div>
-
+                    <p>Unhappy?</p>
+                    <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
                   </div>
-                    <h3>Cancel my account</h3>
-                    <div class="inline">
-                      <p>Unhappy?</p>
-                      <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-                    </div>
+
+
                   </div>
                 </span>
               </form>

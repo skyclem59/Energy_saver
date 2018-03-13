@@ -26,7 +26,6 @@
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li><%= link_to "Mon profil", edit_user_registration_path %></li>
               <li><%= link_to "Gérer mes objets",edit_house_path(current_user.house.id) %></li>
-              <li><%= link_to "Ajouter un objet connecté", new_device_path %></li>
               <li><%= link_to "Statistiques", consumption_path('consumption_path(day)') %></li>
               <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             </ul>
