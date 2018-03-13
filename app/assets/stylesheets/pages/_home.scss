@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .home-page {
-  height: 65vh;
+  height: 80vh;
   background: url(asset-path('bg')), #C4C4C4;
   background-position: center;
   background-size: cover;
@@ -8,15 +8,35 @@
   justify-content: space-around;
   align-items: center;
 }
+#home {
+text-align: center;
+}
+
+.title-home-page h3{
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.mybusiness h4{
+  color: #3C4858;
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.mybusiness h3{
+  color: #3C4858;
+  margin-top: 50px;
+}
 
 .onboarding {
-  height: auto;
-  background-color: #3C4858;
+  height: 35vh;
+  background-color: #fff;
   padding-top: 20px;
 }
 
 .mybusiness{
-background-color: #3C4858;
+background-color: #fff;
+height: auto;
 }
 
 .title{
@@ -36,6 +56,10 @@ background-color: #3C4858;
   color: #FFFFFF;
 }
 
+.description-home{
+  padding-top: 20px;
+}
+
 .card .card-title {
   margin-top: 0.625rem;
 }
@@ -46,6 +70,8 @@ background-color: #3C4858;
 
 .info {
   text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .card-home {
@@ -57,6 +83,7 @@ background-color: #3C4858;
 
 .card-title-home .info-title-home .description-home {
   color: white;
+
 }
 .title,
 .card-title,
@@ -70,6 +97,7 @@ background-color: #3C4858;
 }
 .icon.icon-rose {
     color: #e91e63;
+    font-size: 15px;
 }
 .icon.icon-primary {
     color: #9c27b0;
@@ -78,15 +106,39 @@ background-color: #3C4858;
 .icon.icon-info {
     color: #00bcd4;
 }
-.description-home {
-  padding: 5%;
-}
+// .description-home {
+//   padding: 5%;
+// }
 .row_cards {
   margin: 15px;
+}
+.material-icons {
+  font-size: 45px !important;
 }
 
 .btn-primary:hover {
     color: #ffffff;
-    background-color: #0c83e2;
-    border-color: #0c7cd5;
+    background-color: #b20723;
+    border-color: #c41922;
 }
+.info-vertical {
+  margin-top: 20px
+}
+.flex-inside {
+  display: flex;
+  flex-direction: column;
+  align-items: 'center';
+}
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width : 768px) {
+  .info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: stretch;
+  }
+ }
