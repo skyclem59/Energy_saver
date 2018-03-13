@@ -21,7 +21,7 @@
           {name: "Solaire (W)", data: @graph_day_solar.group_by_hour(:stamp).sum(:value)},
           {name: "Gaz (dm3/s)", data: @graph_day_gas.group_by_hour(:stamp).sum(:value)},
           {name: "Eau (L/s)", data: @graph_day_water.group_by_hour(:stamp).sum(:value)}
-          ] , defer: true, xtitle: l(Date.today, format: "%A %e %B ", locale: :fr), refresh: 60, points: false, style: "background-color: black;" %>
+          ] , defer: true, xtitle: l(Date.today, format: "%A %e %B ", locale: :fr), points: false, style: "background-color: black;" %>
 
       <% elsif @period == "w" %>
         <%= line_chart [
