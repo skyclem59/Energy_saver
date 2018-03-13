@@ -1,3 +1,13 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body {
+  min-height: 140px;
+  height: auto;
+  text-align: center;
+}
 
 .card-header {
     padding: 0.75rem 1.25rem;
@@ -5,8 +15,6 @@
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
-
-
 
 .section-signup .card-signup .card-header {
     width: auto;
@@ -25,28 +33,52 @@
     color: #fff;
 }
 
-
-
 .card .card-header-primary {
-    box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
 }
 
+// background blanc de la card
 .card-nav-tabs {
-    margin-top: 45px;
+  margin-top: 45px;
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2), 0 13px 24px -11px rgba(60, 72, 88, 0.46);
 }
+
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 0.25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.25rem;
 }
 
 .card-signup .text-divider {
-    margin-top: 30px;
-    margin-bottom: 0px;
-     text-align: center;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  text-align: center;
  }
+
+ // card smappee
+.chart {
+  padding: 30px 5px;
+}
+
+#chart-1, #chart-2, #chart-3 {
+  height: 150px !important;
+}
+
+.bottom-chart {
+  text-align: center;
+  padding: 10px;
+}
+
+// card light - camera - thermostat
+.light {
+  display: flex;
+  justify-content: space-around;
+}
+.single-light {
+  padding-top: 45px;
+}

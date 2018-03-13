@@ -6,7 +6,7 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 white;
 $font-size-base: 10px;
 
 // Colors
@@ -22,33 +22,3 @@ $border-radius-base:  2px;
 $border-radius-large: 2px;
 $border-radius-small: 2px;
 
-// Override other variables below!
-
-// Title
-h1 {
-  font-size: 42px;
-  font-weight: bold;
-}
-
-h2 {
-  font-size: 34px;
-}
-
-h3 {
-  font-size: 26px;
-  font-weight: bold;
-}
-
-h4 {
-  font-size: 24px !important;
-  font-weight: bold;
-}
-
-h5 {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-p {
-  font-size: 15px;
-}
