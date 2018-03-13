@@ -10,7 +10,7 @@
 }
 
 .onboarding {
-  height: 35vh;
+  height: auto;
   background-color: #3C4858;
   padding-top: 20px;
 }
@@ -57,4 +57,36 @@ background-color: #3C4858;
 
 .card-title-home .info-title-home .description-home {
   color: white;
+}
+.title,
+.card-title,
+.info-title,
+.footer-brand,
+.footer-big h5,
+.footer-big h4,
+.media .media-heading {
+    font-weight: 700;
+    font-family: "Roboto Slab", "Times New Roman", serif;
+}
+.icon.icon-rose {
+    color: #e91e63;
+}
+.icon.icon-primary {
+    color: #9c27b0;
+}
+
+.icon.icon-info {
+    color: #00bcd4;
+}
+.description-home {
+  padding: 5%;
+}
+.row_cards {
+  margin: 15px;
+}
+
+.btn-primary:hover {
+    color: #ffffff;
+    background-color: #0c83e2;
+    border-color: #0c7cd5;
 }
