@@ -1,11 +1,10 @@
 <div class="formulaire">
-
   <div class="signin">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
       <div class="row">
-        <div class="col-md-10 ml-auto mr-auto">
+        <div class="col-xs-12 col-sm-12">
           <div class="card card-signup">
             <form class="form" method="" action="">
               <div class="card-header card-header-primary ">
@@ -13,15 +12,15 @@
               </div>
               <h4>Renseignez vos informations</h4>
               <div class="card-body">
-                <span class="bmd-form-group"><div class="input-group">
+                <div class="input">
                   <%= f.input :email, required: true, autofocus: true %>
-                </div></span>
-                <span class="bmd-form-group"><div class="input-group">
+                </div>
+                <div class="input">
                   <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-                </div></span>
-                <span class="bmd-form-group"><div class="input-group">
+                </div>
+                <div class="input">
                   <%= f.input :password_confirmation, required: true %>
-                </div></span>
+                </div>
               </div>
               <div class="card-footer">
                 <div class="form-actions">
