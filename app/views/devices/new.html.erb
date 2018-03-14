@@ -17,6 +17,7 @@
   <div class="container">
     <%= link_to 'Connecter ma camera nest', "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&state=STATE" %>
   </div>
+
+
+  <%= link_to 'connect hue', "https://api.meethue.com/oauth2/auth?appid=#{ENV['HUE_CLIENT_ID']}&clientid=71465&deviceid=#{244}&devicename=energy-saver&state=gakbjgmbjkgkmqdjbgkmqb&response_type=code"%>
 </div>
-
-
