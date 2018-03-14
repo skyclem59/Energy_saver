@@ -15,8 +15,6 @@
 
 
   <div class="container">
-    <%= link_to 'Connecter ma camera nest', "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&state=STATE" %>
+    <%= link_to 'Connecter ma caméra Nest', "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&state=STATE&redirect_uri=#{nest_callback_url}" %>
   </div>
 </div>
-
-

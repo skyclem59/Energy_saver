@@ -41,7 +41,8 @@ class DevicesController < ApplicationController
     @device = Device.new(device_params)
     @device[:house_id]= current_user.house.id
     if @device.save
-      redirect_to devices_path
+      redirect_to 'nest'
+      # redirect_to devices_path
     end
   end
 
@@ -56,6 +57,13 @@ class DevicesController < ApplicationController
   def destroy
     @device.destroy
     redirect_to devices_path
+  end
+
+  def nestcallback
+    params[:code]
+    # device.nest_id =
+    p params
+    render '<html></html>'
   end
 
   private
