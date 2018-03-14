@@ -1,14 +1,12 @@
-<div class="col-md-4">
-    <div class="card card-nav-tabs">
-      <div class="card-header card-header-primary">
-        <h3><%= device.name %></h3>
-      </div>
-      <div class="card-body single-light">
-        <!-- thermostat  -->
+<div class="card card-nav-tabs light">
+  <div class="card-header card-header-primary">
+    <h3><%= device.name %></h3>
+  </div>
+  <div class="card-body">
+    <!-- thermostat  -->
 
-        <%= render "shared/modal_thermostat", device: @thermostat  %>
+    <%= render "shared/modal_thermostat", device: @thermostat  %>
 
 <!-- thermostat -->
-      </div>
-    </div>
+  </div>
 </div>
