@@ -1,14 +1,26 @@
 
 <!-- Large modal -->
-<button type="button" class="btn btn-therm" data-toggle="modal" data-target=".bd-example-modal-lg">20°C</button>
+
+<% @set_temp = 21  %>
+<% @ambient_temp = 18  %>
+
+<button type="button" class="btn btn-therm" data-toggle="modal" data-target=".bd-example-modal-lg"><%= "#{@ambient_temp}  °C | #{@set_temp}°C"%></button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-<%= render "shared/modal_nest", device: @thermostat  %>
-
+      <%= render "shared/modal_nest", device: @thermostat  %>
 
     </div>
+  </div>
+  <div >
+
+    <label><span>Away</span>
+    <select id='input_away'>
+      <option value=''>No</option>
+      <option value='1'>Yes</option>
+    </select>
+  </label>
   </div>
 </div>

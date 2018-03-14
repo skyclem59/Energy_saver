@@ -9,23 +9,38 @@
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+
+     <%= @ambient_temp %>
       <!-- thermostat sart   ... -->
       <div id='container'>
-        <div id='thermostat'></div>
 
         <div id='controls'>
 
-          <p>
-            Click and hold the dial above until a white ring appears (1 second), then drag up / down or left / right to change the target temperature.
-          </p>
+          <label><span>Ambient Temperature</span>
+          <input type='range' min='-5' max='40' value='10' id='input_ambient_temperature' step='0.5' />
+        </label>
 
-          <label><span>Target Temperature</span>
-            <input type='range' min='10' max='30' value='10' id='input_target_temperature' step='0.5' />
-          </label>
+        <label><span>Target Temperature</span>
+          <input type='range' min='10' max='30' value='10' id='input_target_temperature' step='0.5' />
+        </label>
 
-            <label><span>Ambient Temperature</span>
-            <input type='range' min='-5' max='40' value='10' id='input_ambient_temperature' step='0.5' />
+
+            <label><span>Away</span>
+            <select id='input_away'>
+              <option value=''>No</option>
+              <option value='1'>Yes</option>
+            </select>
           </label>
+        </div>
+
+</div>
+
+        <div id='thermostat'></div>
+
+
+
+        <div id='controls'>
+
 
             <label><span>State</span>
             <select id='input_state'>
@@ -41,15 +56,6 @@
               <option value='1'>Yes</option>
             </select>
           </label>
-
-            <label><span>Away</span>
-            <select id='input_away'>
-              <option value=''>No<@import "btn";/option>
-              <option value='1'>Yes</option>
-            </select>
-          </label>
-        </div>
-
 
       <!-- thermostat end -->
     </div>
