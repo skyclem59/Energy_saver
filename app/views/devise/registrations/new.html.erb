@@ -22,7 +22,9 @@
                   <%= f.input :password_confirmation, label: "Confirmez votre mot de passe", required: true %>
                 </div>
               </div>
-              <%= render "devise/shared/links" %>
+              <div class="text-center">
+                <%= render "devise/shared/links" %>
+              </div>
               <div class="card-footer">
                 <div class="form-actions">
                   <%= f.button :submit, "S'inscrire", class: "btn btn-primary" %>
