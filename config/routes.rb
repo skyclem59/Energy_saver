@@ -12,15 +12,13 @@ Rails.application.routes.draw do
   get '/auth/philips', to: 'philips#new', as: :new_philips
   post '/auth/philips/', to: 'philips#create', as: :philips
 
-  scope '(:locale)', locale: /fr/ do
-    resources :houses, only: [:show, :new, :create, :edit, :update]
-    resources :devices do
-      resources :types, only: :index
-    end
-    resources :actions, only: :index
-    resources :brands, only: :index
-    resources :consumptions , only: :show
-
-    root to: 'pages#home'
+  resources :houses, only: [:show, :new, :create, :edit, :update]
+  resources :devices do
+    resources :types, only: :index
   end
+  resources :actions, only: :index
+  resources :brands, only: :index
+  resources :consumptions , only: :show
+
+  root to: 'pages#home'
 end
