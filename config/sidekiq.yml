@@ -7,5 +7,5 @@
   - mailers
 :schedule:
   update_consumption_job:
-    every: '1m' 
+    every: '30s' 
     class: UpdateConsumptionsJob
