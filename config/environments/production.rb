@@ -3,7 +3,7 @@ Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
 
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: 'http://www.energy-saver.info/' }
+  config.action_mailer.default_url_options = { host: 'https://www.energy-saver.info/' }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
