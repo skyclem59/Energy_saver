@@ -1,19 +1,29 @@
-// .providers-list {
-//   display: flex;
-//   justify-content: space-around;
-//   padding: 30px;
-//   width: 100%;
-//   list-style: none;
-// }
-//
-// .providers-list--item {
-//   > a {
-//     display: flex;
-//     flex-direction: column;
-//   }
+.providers-list {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  width: 100%;
+  list-style: none;
+}
 
-  img {
+.providers-list--item {
+  > a {
+    display: flex;
+    flex-direction: column;
+  }
+ }
+img {
     margin-bottom: 10px;
     width: 100px;
     height: 100px;
+    margin: 15px;
   }
+
+.card-product {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 30px;
+  width: 100%;
+  list-style: none;
+}

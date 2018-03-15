@@ -3,75 +3,21 @@
   <h2>Ajouter un objet connecté</h2>
   <div class="row">
     <% @devices = current_user.house.devices %>
-    <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card card-signup">
-        <div class="card-body card-position">
-          <div class="brand">
-            <h4 id="brand-title">Smappee</h4>
+      <% PROVIDERS.each do |provider| %>
+          <div class="col-xs-12 col-sm-3 col-md-4">
+            <div class="card card-signup">
+              <div class="card-body card-position card-product">
+                <%= link_to provider[:link] do %>
+                  <%= image_tag "providers/#{provider[:image]}", class: 'img-circle img-thumbnail' %>
+                  <span class="title"><%= provider[:name] %></span>
+                <% end %>
+                <!-- <%= link_to "Ajouter", new_device_path, class: " btn btn-primary ajout" %> -->
+              </div>
+            </div>
           </div>
-          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
-          <%= link_to "Ajouter", new_device_path, class: " btn btn-primary ajout" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card card-signup">
-        <div class="card-body">
-          <div class="brand">
-            <h4 id="brand-title">Nest</h4>
-          </div>
-          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
-          <%= link_to "Ajouter", new_device_path, class: "btn btn-primary ajout" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card card-signup">
-        <div class="card-body">
-          <div class="brand">
-            <h4 id="brand-title">Philips Hue</h4>
-          </div>
-          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
-          <%= link_to "Ajouter", new_device_path, class: "btn btn-primary ajout" %>
-        </div>
-      </div>
-    </div>
+      <% end %>
   </div>
   <!-- listing de cards -->
   <h2>Mes objets</h2>
-  <div class="row">
-    <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card card-signup">
-        <div class="card-body">
-          <div class="brand">
-            <h4 id="brand-title">Philips Hue1</h4>
-          </div>
-          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
-          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card card-signup">
-        <div class="card-body">
-          <div class="brand">
-            <h4 id="brand-title">Philips Hue2</h4>
-          </div>
-          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
-          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-4">
-      <div class="card card-signup">
-        <div class="card-body">
-          <div class="brand">
-            <h4 id="brand-title">Philips Hue3</h4>
-          </div>
-          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
-          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render "shared/actions_objects", device: @devices %>
 </div>
