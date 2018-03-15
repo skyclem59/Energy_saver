@@ -28,10 +28,10 @@ gem 'rest-client'
 
 gem 'omniauth-nest'
 
-gem 'hue'
-
 # Tracker les serveurs
 gem 'appsignal'
+
+gem 'sidekiq-scheduler'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

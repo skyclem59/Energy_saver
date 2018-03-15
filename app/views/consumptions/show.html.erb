@@ -17,35 +17,27 @@
     <div class="">
       <% if @period == "d" %>
         <%= line_chart [
-          {name: "Electricité (W)", data: @graph_day_elec.group_by_hour(:stamp).sum(:value)},
-          {name: "Solaire (W)", data: @graph_day_solar.group_by_hour(:stamp).sum(:value)},
-          {name: "Gaz (dm3/s)", data: @graph_day_gas.group_by_hour(:stamp).sum(:value)},
-          {name: "Eau (L/s)", data: @graph_day_water.group_by_hour(:stamp).sum(:value)}
-          ] , defer: true, xtitle: l(Date.today, format: "%A %e %B ", locale: :fr), points: false, style: "background-color: black;" %>
+          {name: "Solaire (W)", data: @graph_day_solar.group_by_minute(:stamp).sum(:value), discrete: true},
+          {name: "Electricité (W)", data: @graph_day_elec.group_by_minute(:stamp).sum(:value), discrete: true},
+          ] , defer: true, xtitle: l(Date.today, format: "%A %e %B ", locale: :fr), points: false, colors: ["gold", "rebeccapurple"], style: "background-color: black;" %>
 
       <% elsif @period == "w" %>
-        <%= line_chart [
-          {name: "Electricité", data: @graph_week_elec.group_by_day(:stamp).sum(:value), discrete: true },
-          {name: "Solaire", data: @graph_week_solar.group_by_day(:stamp).sum(:value), discrete: true },
-          {name: "Gaz", data: @graph_week_gas.group_by_day(:stamp).sum(:value), discrete: true },
-          {name: "Eau", data: @graph_week_water.group_by_day(:stamp).sum(:value), discrete: true }
-          ] , defer: true, xtitle: "Semaine #{l Date.today, format: "%W", locale: :fr}", points: false %>
+        <%= column_chart [
+          {name: "Solaire", data: @graph_week_solar.group_by_hour(:stamp).sum(:value), discrete: true },
+          {name: "Electricité", data: @graph_week_elec.group_by_hour(:stamp).sum(:value), discrete: true },
+          ] , defer: true, xtitle: "Semaine #{l Date.today, format: "%W", locale: :fr}", points: false, colors: ["gold", "rebeccapurple"] %>
 
       <% elsif @period == "m" %>
-        <%= line_chart [
-          {name: "Electricité", data: @graph_month_elec.group_by_week(:stamp).sum(:value)},
-          {name: "Solaire", data: @graph_month_solar.group_by_week(:stamp).sum(:value)},
-          {name: "Gaz", data: @graph_month_gas.group_by_week(:stamp).sum(:value)},
-          {name: "Eau", data: @graph_month_water.group_by_week(:stamp).sum(:value)}
-          ] , defer: true, xtitle: "#{l Date.today, format: "%B %Y ", locale: :fr}", points: false %>
+        <%= column_chart [
+          {name: "Solaire", data: @graph_month_solar.group_by_day(:stamp).sum(:value)},
+          {name: "Electricité", data: @graph_month_elec.group_by_day(:stamp).sum(:value)},
+          ] , defer: true, xtitle: "#{l Date.today, format: "%B %Y ", locale: :fr}", points: false, colors: ["gold", "rebeccapurple"] %>
 
       <% elsif @period == "y" %>
-        <%= line_chart [
-          {name: "Electricité", data: @graph_year_elec.group_by_month(:stamp).sum(:value)},
-          {name: "Solaire", data: @graph_year_solar.group_by_month(:stamp).sum(:value)},
-          {name: "Gaz", data: @graph_year_gas.group_by_month(:stamp).sum(:value)},
-          {name: "Eau", data: @graph_year_water.group_by_month(:stamp).sum(:value)}
-          ] , defer: true, xtitle: "#{l Date.today, format: "%Y", locale: :fr}", points: false %>
+        <%= column_chart [
+          {name: "Solaire", data: @graph_year_solar.group_by_day(:stamp).sum(:value)},
+          {name: "Electricité", data: @graph_year_elec.group_by_day(:stamp).sum(:value)},
+          ] , defer: true, xtitle: "#{l Date.today, format: "%Y", locale: :fr}", points: false, colors: ["gold", "rebeccapurple"] %>
       <% end %>
     </div>
   </div>
