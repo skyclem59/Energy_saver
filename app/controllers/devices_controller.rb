@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
 
   def index
 
-    redirect_to edit_house_path(current_user.house.id)  unless Device.where(house: current_user.house).count > 0
+    redirect_to edit_house_path(current_user.house.id) unless Device.where(house: current_user.house).count > 0
 
 
     @graph_instant_gas = Consumption.where("energy = 'gas'").last(10).map do |c|
