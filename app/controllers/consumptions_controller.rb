@@ -2,7 +2,6 @@ class ConsumptionsController < ApplicationController
 
   def show
   #  instantané
-
     @graph_instant_solar = []
      Consumption.where("energy = 'solar'").last(10).each do |c|
       @graph_instant_solar << [c.stamp.strftime("%H:%M") , c.value]
