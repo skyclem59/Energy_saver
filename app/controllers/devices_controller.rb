@@ -1,10 +1,13 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
 
+
   def index
 
+    redirect_to edit_house_path(current_user.house.id)  unless Device.all.count > 0
+
     @graph_instant_solar = []
-     Consumption.where("energy = 'solar'").last(10).each do |c|
+    Consumption.where("energy = 'solar'").last(10).each do |c|
       @graph_instant_solar << [c.stamp.strftime("%H:%M") , c.value]
     end
 
@@ -67,4 +70,5 @@ class DevicesController < ApplicationController
   def device_params
     params.require(:device).permit(:name, :type_id, :house_id)
   end
-end
+
+ end

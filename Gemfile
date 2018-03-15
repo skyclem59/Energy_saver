@@ -28,8 +28,6 @@ gem 'rest-client'
 
 gem 'omniauth-nest'
 
-gem 'hue'
-
 # Tracker les serveurs
 gem 'appsignal'
 
