@@ -39,16 +39,38 @@
   </div>
   <!-- listing de cards -->
   <h2>Mes objets</h2>
-  <div class="cards">
-    <div class="row">
-      <div class="col-xs-12 col-sm-3 col-md-4">
-        <%= render "shared/card_thermostat", device: @thermostat if @thermostat.present? %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue1</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-3 col-md-4">
-        <%= render "shared/card_camera", device: @camera if @camera.present? %>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue2</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-3 col-md-4">
-        <%= render "shared/card_lights", devices: @light_devices if @light_devices.present? %>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue3</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
       </div>
     </div>
   </div>
