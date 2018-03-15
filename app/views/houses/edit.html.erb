@@ -4,37 +4,22 @@
       <div class="form-inputs">
         <div class="row">
           <div class="col-md-12 ml-auto mr-auto">
-
-            <!-- <div class="card card-signup">
-              <form class="form" method="" action="">
-                <div class="card-header card-header-primary ">
-                  <h3>Gérer ma maison</h3>
-                </div>
-                <div class="card-body">
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <%= simple_form_for (@house) do |f|  %>
-                        <%= f.input :name, required: true, autofocus: true  %>
-                        <%= f.button :submit, "Valider" %>
-                      <% end %>
-                    </div>
-                  </span>
-                </div>
-              </form>
-            </div> -->
-
             <div class="card card-signup">
               <form class="form" method="" action="">
                 <div class="card-header card-header-primary ">
                   <h3>Gérer mes objets</h3>
                 </div>
                 <div class="card-body">
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <% @devices = current_user.house.devices %>
-                      <%= link_to " Ajouter un objet", new_device_path, class: "btn btn-default" %>
-                    </div>
-                  </span>
+                  <ul class="providers-list">
+                    <% PROVIDERS.each do |provider| %>
+                      <li class="providers-list--item">
+                        <%= link_to provider[:link] do %>
+                          <%= image_tag "providers/#{provider[:image]}", class: 'img-circle img-thumbnail' %>
+                          <span class="title"><%= provider[:name] %></span>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  </ul>
                 </div>
               </form>
             </div>

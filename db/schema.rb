@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309142201) do
+ActiveRecord::Schema.define(version: 20180314151017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,9 @@ ActiveRecord::Schema.define(version: 20180309142201) do
     t.bigint "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
+    t.string "refresh_token"
+    t.integer "expires_in"
     t.index ["house_id"], name: "index_devices_on_house_id"
     t.index ["type_id"], name: "index_devices_on_type_id"
   end
