@@ -1,9 +1,16 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
 
+
   def index
+
+    redirect_to edit_house_path(current_user.house.id)  unless Device.where(house: current_user.house).count > 0
+
+    
+    
     @graph_instant_gas = Consumption.where("energy = 'gas'").last(10).map do |c|
       [c.stamp.strftime("%H:%M") , c.value]
+
     end
 
     @graph_instant_water = Consumption.where("energy = 'water'").last(10).map do |c|
