@@ -2,12 +2,7 @@ PROVIDERS = [
   {
     name: 'Nest',
     image: 'nest.png',
-
-    type: 'Thermostat',
-    
-
-    link: "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&redirect_uri=http://localhost:3000/nest/callback&state=EZAEREZAEZARZEREZZGSFGFSGSFGERZTAZ"
-
+    link: "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&redirect_uri=https://www.energy-saver.info/nest/callback&state=EZAEREZAEZARZEREZZGSFGFSGSFGERZTAZ"
   },
   {
     name: 'Smappee',
