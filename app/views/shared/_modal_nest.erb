@@ -1,3 +1,40 @@
+<!-- thermostat sart   ... -->
+
+<script>
+  var ambient_temp = <%= @ambient_temp %>;
+  var set_temp = <%= @set_temp %>;
+</script>
+
 <div id='container'>
+
   <div id='thermostat'></div>
+
+
+
+  <label><span></span>
+    <div id='input_ambient_temperature'> </div>
+  </label>
+
+  <label><span></span>
+    <div id='input_target_temperature'></div>
+  </label>
 </div>
+
+<label><span>Absent</span>
+  <select id='input_away'>
+    <option value=''>Non</option>
+    <option value='1'>Oui</option>
+  </select>
+</label>
+
+<label><span></span>
+  <div id='input_state'>
+  </div>
+</label>
+
+<label><span></span>
+  <div id='input_leaf'>
+  </div>
+</label>
+
+<!-- thermostat end -->
