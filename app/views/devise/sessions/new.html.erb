@@ -1,5 +1,3 @@
-
-
 <div class="formulaire">
     <div class="signin">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -10,17 +8,16 @@
               <form class="form" method="" action="">
                 <div class="card-header card-header-primary ">
                   <h3>Connexion</h3>
-                  <div class="inline social-line">
-                    <%- if devise_mapping.omniauthable? %>
-                      <%- resource_class.omniauth_providers.each do |provider| %>
-                        <%= link_to omniauth_authorize_path(resource_name, provider) do %>
-                        <i class="fab fa-facebook-square"></i>
-                        <% end %>
-                      <% end -%>
-                    <% end -%>
-                  </div>
                 </div>
-                <h4>Or Be Classical</h4>
+                <div class="inline social-line">
+                  <%- if devise_mapping.omniauthable? %>
+                    <%- resource_class.omniauth_providers.each do |provider| %>
+                      <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+                        <i class="fab fa-facebook-square fb"></i>
+                      <% end %>
+                    <% end -%>
+                  <% end -%>
+                </div>
                 <div class="card-body">
                   <div class="input">
                   <%= f.input :email, label: "Email", required: false, autofocus: true %>
