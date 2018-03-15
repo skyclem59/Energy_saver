@@ -10,24 +10,17 @@
               <ul class="nav nav-tabs" data-tabs="tabs">
                 <li class="nav-item">
                   <h4><%= device.name %></h4>
-                  <h4>
-                    <%= link_to "Modifier", edit_device_path(device.id), class: 'btn btn-default' %>
-                    <%= link_to "Supprimer", device_path(device.id) , method: "delete", class: "btn btn-default " %>
-                    <%= link_to "Action", actions_path, class: 'btn btn-default' %>
-                  </h4>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="card-body ">
+        <div class="card-body card-product">
           <div class="tab-content ">
             <div class="tab-pane active" >
-              <p>
-                Du graphique ou du texte
-                <br>
-                e artibus quamquam artibus qui alios ipse deterruisset te tibi est quidem alios videri te tenent necesse.
-              </p>
+              <% provider = PROVIDERS.find {|provider| device.name == provider[:name]} %>
+              <%= image_tag "providers/#{provider[:image]}", class: 'img-circle img-thumbnail' %>
+              <%= link_to "Supprimer", device_path(device.id) , method: "delete", class: "btn btn-default " %>
             </div>
           </div>
         </div>

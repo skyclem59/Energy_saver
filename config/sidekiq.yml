@@ -5,4 +5,7 @@
 :queues:  # Queue priority: https://github.com/mperham/sidekiq/wiki/Advanced-Options
   - default
   - mailers
-
+:schedule:
+  update_consumption_job:
+    every: '30s' 
+    class: UpdateConsumptionsJob

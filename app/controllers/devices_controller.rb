@@ -74,7 +74,11 @@ class DevicesController < ApplicationController
     @device[:house_id]= current_user.house.id
 
     if @device.save
-      redirect_to devices_path
+      if @device.type.brand_id == 3
+        redirect_to "https://home.nest.com/login/oauth2?client_id=#{ENV['NEST_ID']}&state=STATE&redirect_uri=#{nest_callback_url}"
+      else
+        redirect_to devices_path
+      end
     end
   end
 
@@ -89,6 +93,29 @@ class DevicesController < ApplicationController
   def destroy
     @device.destroy
     redirect_to devices_path
+  end
+
+  def nestcallback
+    @code = params[:code]
+    require 'rest-client'
+    payload = {
+      grant_type: 'authorization_code',
+      client_id: ENV['NEST_ID'],
+      client_secret: ENV['NEST_SECRET'],
+      code: params[:code]
+    }
+    headers = { content_type: 'application/x-www-form-urlencoded' }
+    res = RestClient.post("https://api.home.nest.com/oauth2/access_token", payload, headers)
+    response = JSON.parse(res.to_s)
+    response["access_token"]
+    headers = {
+      authorization: "Bearer #{response['access_token']}",
+      content_type: 'application/json'
+    }
+
+    res = RestClient.get("https://developer-api.nest.com/devices/cameras", headers)
+    p '?' * 200
+    @devices = JSON.parse(res.to_s)
   end
 
   private

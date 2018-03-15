@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'omniauth-facebook'
+gem 'omniauth-nest'
 gem 'oauth2'
 gem 'rails-i18n', '5.0.3'
 
@@ -26,10 +27,10 @@ gem 'groupdate'
 gem 'active_median'
 gem 'rest-client'
 
-gem 'omniauth-nest'
-
 # Tracker les serveurs
 gem 'appsignal'
+
+gem 'sidekiq-scheduler'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
