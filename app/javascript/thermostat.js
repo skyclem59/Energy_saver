@@ -91,7 +91,7 @@ var thermostatDial = (function() {
       minValue: options.minValue || 10, // Minimum value for target temperature
       maxValue: options.maxValue || 30, // Maximum value for target temperature
       numTicks: options.numTicks || 150, // Number of tick lines to display around the dial
-      onSetTargetTemperature: options.onSetTargetTemperature || function() {}, // Function called when new target temperature set by the dial
+      onSetTargetTemperature: options.onSetTargetTemperature || function() {}, // PK Function called when new target temperature set by the dial
     };
 
     /*
@@ -113,8 +113,15 @@ var thermostatDial = (function() {
      * Object state
      */
     var state = {
-      target_temperature: options.minValue,
-      ambient_temperature: options.minValue,
+
+
+
+      //pk   here to set  our values
+      // target_temperature: options.minValue, pk
+      target_temperature: set_temp,
+      // ambient_temperature: options.minValue, pk
+      ambient_temperature: ambient_temp,
+
       hvac_state: properties.hvac_states[0],
       has_leaf: false,
       away: false
@@ -134,6 +141,7 @@ var thermostatDial = (function() {
     });
     Object.defineProperty(this,'ambient_temperature',{
       get: function() {
+        var ambient_temperature = 19
         return state.ambient_temperature;
       },
       set: function(val) {

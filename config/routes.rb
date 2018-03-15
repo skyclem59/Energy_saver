@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get 'nest/callback', to: "devices#nestcallback"
+  get  '/auth/smappee', to: 'smappee#new', as: :new_smappee
+  post '/auth/smappee/callback', to: 'smappee#create', as: :smappee
 
   scope '(:locale)', locale: /fr/ do
     resources :houses, only: [:show, :new, :create, :edit, :update]

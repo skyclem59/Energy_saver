@@ -1,20 +1,22 @@
-<div class="card card-nav-tabs">
+<div class="card">
   <div class="card-header card-header-primary">
     <h3><%= name %></h3>
   </div>
-  <div class="card-body">
-    <div class="chart smappee">
-      <% if multiline %>
+  <div class="body-bottom">
+    <div class="card-body">
+      <div class="chart smappee">
+        <% if multiline %>
         <%= line_chart [
-        {name: "Electricité", data: graph1 },
-        {name: "Solaire", data: graph2}
-        ], defer: true, class: "chartsize", height: "150px", width: "210px", points: false %>
-      <% else %>
-        <%= line_chart graph, defer: true, class: "chartsize", height: "150px", width: "210px", points: false %>
-      <% end %>
-    </div>
-  </div>
-  <div class="bottom-chart">
-    <%= link_to "Voir en détail", consumption_path('consumption_path(day)'), type:"button", class:"btn btn-primary" %>
+          {name: "Electricité", data: graph1 },
+          {name: "Solaire", data: graph2}
+          ], defer: true, class: "chartsize", height: "150px", width: "210px", points: false %>
+          <% else %>
+          <%= line_chart graph, defer: true, class: "chartsize", height: "150px", width: "210px", points: false %>
+          <% end %>
+        </div>
+      </div>
+      <div class="bottom-chart">
+        <%= link_to "Voir en détail", consumption_path('consumption_path(day)'), type:"button", class:"btn btn-primary" %>
+      </div>
   </div>
 </div>

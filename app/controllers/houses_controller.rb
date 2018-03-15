@@ -18,6 +18,7 @@ class HousesController < ApplicationController
   end
 
   def edit
+    @devices = Device.all
   end
 
   def update

@@ -1,49 +1,87 @@
-<div class="edit">
-  <div class="editform">
-
-      <div class="form-inputs">
-        <div class="row">
-          <div class="col-md-12 ml-auto mr-auto">
-
-            <!-- <div class="card card-signup">
-              <form class="form" method="" action="">
-                <div class="card-header card-header-primary ">
-                  <h3>Gérer ma maison</h3>
-                </div>
-                <div class="card-body">
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <%= simple_form_for (@house) do |f|  %>
-                        <%= f.input :name, required: true, autofocus: true  %>
-                        <%= f.button :submit, "Valider" %>
-                      <% end %>
-                    </div>
-                  </span>
-                </div>
-              </form>
-            </div> -->
-
-            <div class="card card-signup">
-              <form class="form" method="" action="">
-                <div class="card-header card-header-primary ">
-                  <h3>Gérer mes objets</h3>
-                </div>
-                <div class="card-body">
-                  <span class="bmd-form-group">
-                    <div class="input-group">
-                      <% @devices = current_user.house.devices %>
-                      <%= link_to " Ajouter un objet", new_device_path, class: "btn btn-default" %>
-                    </div>
-                  </span>
-                </div>
-              </form>
-            </div>
-            <%= render "shared/actions_objects", device: @devices %>
-            <div class="form-actions">
-              <!-- <%= link_to "Retour", devices_path, class:"btn btn-success" %> -->
-            </div>
+<div class="container">
+  <!-- ajouter un objet -->
+  <h2>Ajouter un objet connecté</h2>
+  <div class="row">
+    <% @devices = current_user.house.devices %>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body card-position">
+          <ul class="providers-list">
+            <% PROVIDERS.each do |provider| %>
+              <li class="providers-list--item">
+                <%= link_to provider[:link] do %>
+                  <%= image_tag "providers/#{provider[:image]}", class: 'img-circle img-thumbnail' %>
+                  <span class="title"><%= provider[:name] %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <div class="brand">
+            <h4 id="brand-title">Smappee</h4>
           </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Ajouter", new_device_path, class: " btn btn-primary ajout" %>
         </div>
       </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Nest</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Ajouter", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
       </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Ajouter", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- listing de cards -->
+  <h2>Mes objets</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue1</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue2</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="card card-signup">
+        <div class="card-body">
+          <div class="brand">
+            <h4 id="brand-title">Philips Hue3</h4>
+          </div>
+          <%= link_to "logo", new_device_path, class: "btn btn-default logo" %>
+          <%= link_to "Supprimer", new_device_path, class: "btn btn-primary ajout" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

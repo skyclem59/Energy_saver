@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">Connectez vous à votre compte Smappee</h1>
+  <div class="row">
+    <div class="col-12 col-sm-6  col-sm-offset-3">
+      <%= simple_form_for @model, url: smappee_path do |f|  %>
+        <%= f.input :username, required: true, autofocus: true %>
+        <%= f.input :password, type: :password, required: true %>
+        <div class="form-actions">
+          <%= f.button :submit, "Valider" %>
+          <%= link_to "Retour", devices_path, class:"btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
