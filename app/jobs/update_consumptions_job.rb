@@ -1,7 +1,8 @@
 class UpdateConsumptionsJob < ApplicationJob
+  require 'sidekiq-scheduler'
   queue_as :default
 
-  def perform(device_id)
+  def perform
     update_smappee_consumptions
   end
 
