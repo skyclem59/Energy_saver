@@ -33,7 +33,7 @@ class HousesController < ApplicationController
   end
 
   def set_house
-    @house = House.find(params[:id])
+    @house = current_user.house
   end
 
 end

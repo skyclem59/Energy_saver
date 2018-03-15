@@ -24,6 +24,19 @@ class DevicesController < ApplicationController
       [c.stamp.strftime("%H:%M") , c.value]
     end
 
+    @device = Device.find_by(name: 'Nest')
+
+    if @device.present?
+      headers = {
+        authorization: "Bearer #{@device.token}",
+        content_type: 'application/json'
+      }
+
+      res = RestClient.get("https://developer-api.nest.com/devices/cameras", headers)
+      nest = JSON.parse(res.body).first
+      @camera_url = nest[1]['web_url']
+    end
+
     # @smappee = Device.find_by_name("Smappee");
     #
     # service = service_location(@smappee.token)
@@ -95,28 +108,28 @@ class DevicesController < ApplicationController
     redirect_to devices_path
   end
 
-  def nestcallback
-    @code = params[:code]
-    require 'rest-client'
-    payload = {
-      grant_type: 'authorization_code',
-      client_id: ENV['NEST_ID'],
-      client_secret: ENV['NEST_SECRET'],
-      code: params[:code]
-    }
-    headers = { content_type: 'application/x-www-form-urlencoded' }
-    res = RestClient.post("https://api.home.nest.com/oauth2/access_token", payload, headers)
-    response = JSON.parse(res.to_s)
-    response["access_token"]
-    headers = {
-      authorization: "Bearer #{response['access_token']}",
-      content_type: 'application/json'
-    }
-
-    res = RestClient.get("https://developer-api.nest.com/devices/cameras", headers)
-    p '?' * 200
-    @devices = JSON.parse(res.to_s)
-  end
+  # def nestcallback
+  #   @code = params[:code]
+  #   require 'rest-client'
+  #   payload = {
+  #     grant_type: 'authorization_code',
+  #     client_id: ENV['NEST_ID'],
+  #     client_secret: ENV['NEST_SECRET'],
+  #     code: params[:code]
+  #   }
+  #   headers = { content_type: 'application/x-www-form-urlencoded' }
+  #   res = RestClient.post("https://api.home.nest.com/oauth2/access_token", payload, headers)
+  #   response = JSON.parse(res.to_s)
+  #   response["access_token"]
+  #   headers = {
+  #     authorization: "Bearer #{response['access_token']}",
+  #     content_type: 'application/json'
+  #   }
+  #
+  #   res = RestClient.get("https://developer-api.nest.com/devices/cameras", headers)
+  #   p '?' * 200
+  #   @devices = JSON.parse(res.to_s)
+  # end
 
   private
 
