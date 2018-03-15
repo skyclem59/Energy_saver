@@ -6,16 +6,6 @@
     <div class="col-xs-12 col-sm-3 col-md-4">
       <div class="card card-signup">
         <div class="card-body card-position">
-          <ul class="providers-list">
-            <% PROVIDERS.each do |provider| %>
-              <li class="providers-list--item">
-                <%= link_to provider[:link] do %>
-                  <%= image_tag "providers/#{provider[:image]}", class: 'img-circle img-thumbnail' %>
-                  <span class="title"><%= provider[:name] %></span>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
           <div class="brand">
             <h4 id="brand-title">Smappee</h4>
           </div>
