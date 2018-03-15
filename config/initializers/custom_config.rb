@@ -10,8 +10,8 @@ PROVIDERS = [
     link: '/auth/smappee'
   },
   {
-    name: 'Phillips HUE',
+    name: 'Philips HUE',
     image: 'hue.png',
-    link: '/auth/phillips'
+    link: '/auth/philips'
   }
 ]

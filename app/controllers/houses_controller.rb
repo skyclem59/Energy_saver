@@ -10,7 +10,7 @@ class HousesController < ApplicationController
 
   def create
     @house = house.new(house_params)
-        if @horse.save
+        if @house.save
           redirect_to house_path(@house)
         else
           render :new
@@ -18,7 +18,7 @@ class HousesController < ApplicationController
   end
 
   def edit
-    @devices = Device.all
+    @devices = Device.where(house: current_user.house)
   end
 
   def update

@@ -6,8 +6,7 @@ class DevicesController < ApplicationController
 
     redirect_to edit_house_path(current_user.house.id)  unless Device.where(house: current_user.house).count > 0
 
-    
-    
+
     @graph_instant_gas = Consumption.where("energy = 'gas'").last(10).map do |c|
       [c.stamp.strftime("%H:%M") , c.value]
 
@@ -70,8 +69,10 @@ class DevicesController < ApplicationController
   end
 
   def create
+
     @device = Device.new(device_params)
     @device[:house_id]= current_user.house.id
+
     if @device.save
       redirect_to devices_path
     end
