@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'nest/callback', to: "devices#nestcallback"
   get  '/auth/smappee', to: 'smappee#new', as: :new_smappee
   post '/auth/smappee/callback', to: 'smappee#create', as: :smappee
+  get '/auth/philips', to: 'philips#new', as: :new_philips
+  post '/auth/philips/', to: 'philips#create', as: :philips
 
   scope '(:locale)', locale: /fr/ do
     resources :houses, only: [:show, :new, :create, :edit, :update]
