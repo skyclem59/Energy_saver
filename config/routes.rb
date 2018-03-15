@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  get 'nest/callback', to: "devices#nestcallback"
+  get '/nest/callback', to: 'nest#create', as: :nest
   get  '/auth/smappee', to: 'smappee#new', as: :new_smappee
   post '/auth/smappee/callback', to: 'smappee#create', as: :smappee
   get '/auth/philips', to: 'philips#new', as: :new_philips
