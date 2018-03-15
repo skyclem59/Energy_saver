@@ -32,7 +32,7 @@ def create_base
 
   puts "brand seed completed"
 
-  puts "starting object type seed"
+  # puts "starting object type seed"
 
 
 
@@ -96,13 +96,13 @@ puts "action seed completed"
 
 puts "starting devices seed"
 
-Device.create!( name: 'Thermostat Nest', type_id: Type.find_by(name: 'Thermostat').id, house_id: House.first[:id])
-Device.create!( name: 'Camera Nest', type_id: Type.find_by(name: 'Thermostat').id, house_id: House.first[:id])
+# Device.create!( name: 'Thermostat Nest', type_id: Type.find_by(name: 'Thermostat').id, house_id: House.first[:id])
+# Device.create!( name: 'Camera Nest', type_id: Type.find_by(name: 'Thermostat').id, house_id: House.first[:id])
+#
+# Device.create!( name: 'Cuisine', type_id: Type.find_by(name: 'Lampes').id, house_id: House.first[:id])
+# Device.create!( name: 'Salon', type_id: Type.find_by(name: 'Lampes').id, house_id: House.first[:id])
 
-Device.create!( name: 'Cuisine', type_id: Type.find_by(name: 'Lampes').id, house_id: House.first[:id])
-Device.create!( name: 'Salon', type_id: Type.find_by(name: 'Lampes').id, house_id: House.first[:id])
-
-puts "devices seed completed"
+# puts "devices seed completed"
 
 
 User.update(:house_id => House.first.id)
@@ -110,210 +110,211 @@ User.update(:house_id => House.first.id)
 
 end
 
-
-def calculate_week
-
-
-  if @event_time.hour  >=  6 && @event_time.hour  <  7
-
-    return @base * 3  unless   @event_time.min < 30
-    return @base * 2.5
-  end
-
-  if @event_time.hour  >=  7 && @event_time.hour  <  8
-
-    return  @base * 2.5
-
-  end
-
-  if @event_time.hour  >=  8 && @event_time.hour  <  9
-
-    return @base * 2.5 unless   @event_time.min < 30
-    return @base * 2
-
-  end
-
-  if @event_time.hour  >=  9 && @event_time.hour  <  10
-
-    return  @base * 0.7  unless   @event_time.min < 30
-    return  @base * 2
-  end
-
-  if @event_time.hour  >=  10 && @event_time.hour  <  17
-   return @base * 0.5
- end
- if @event_time.hour  >=  17 && @event_time.hour  <  18
-
-  return  @base * 2  unless   @event_time.min > 30
-  return  @base * 1
-
-end
-if @event_time.hour  >=  18 && @event_time.hour  <  22
-
-  return @base * 3
-
-end
-
-if @event_time.hour  >=  22 && @event_time.hour  <  23
-
-  return  @base * 1  unless   @event_time.min > 30
-
-  return @base * 1.5
-
-end
-
-return @base * 0.5
-
-end
-
-def calculate_weekend
-
-
-
-  if @event_time.hour  >=  9 && @event_time.hour  <  10
-
-    return   @base * 1.7  unless   @event_time.min > 30
-    return  @base * 2
-
-  end
-
-  if @event_time.hour  >=  10 && @event_time.hour  <  23
-
-
-    return @base * 2
-  end
-
-  @result =  @base * 0.5
-
-end
-
-def generate_water
-
-  if @event_time.hour  >=  6 && @event_time.hour  <  8
-
-    @base = 0.23 + rand(0.05.. 0.09)
-
-    @energy = "water"
-    Consumption.create!( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
-
-    return
-
-  end
-
-  def generate_solar
-
-    if @event_time.hour  >=  6 && @event_time.hour  <  9
-      @solar = @solar * 1.05 + rand(0.01..1.15)
-
-    end
-
-    if @event_time.hour  >=  10 && @event_time.hour  <  12
-      @solar = @solar * 1.10 + rand(-1.01..1.15)
-
-    end
-
-    if @event_time.hour  >=  13 && @event_time.hour  <  15
-      @solar = @solar * 1.15 + rand(1.01..1.15)
-
-    end
-
-    if @event_time.hour  >=  16 && @event_time.hour  <  17
-      @solar = @solar * 1.00003 + rand(-1.0001..1.015)
-
-    end
-
-    if @event_time.hour  >=  17 && @event_time.hour  <  19
-      @solar = @solar * 1.00030 + rand(-1.01..1.15)
-          end
-
-      @energy = "solar"
-      Consumption.create!( energy: @energy, stamp:@event_time, value: @solar , alwayson: 12)
-
-      return
-
-    end
-
-
-  if @event_time.hour  >=  21 && @event_time.hour  <  23
-
-    @base = 0.23 + rand(0.05.. 0.09)
-    @energy = "water"
-    Consumption.create!( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
-
-    return
-  end
-
-    @energy = "water"
-    Consumption.create!( energy: @energy, stamp:@event_time, value: 0 , alwayson: 12)
-end
-
-
-def generate_week
-
-  loop do
-
-    if (@event_time.sunday? || @event_time.saturday?)
-
-      @base = 1.04 + rand(0.05.. 0.09)
-
-      @energy = "gas"
-      Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_weekend, alwayson: 12)
-      @base = 1.12 + rand(0.05.. 0.09)
-      @energy = "elec"
-      # Consumption.create!( energy: @energy, stamp:@event_time, value:calculate_weekend , alwayson: 12)
-       # @energy = "solar"
-       # Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_weekend , alwayson: 12)
-
-
-
-     else
-
-
-      @base = 1.04 + rand(0.05.. 0.09)
-
-      @energy = "gas"
-      Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_week , alwayson: 12)
-      @base = 1.12 + rand(0.05.. 0.09)
-      @energy = "elec"
-      # Consumption.create!( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
-      # @energy = "solar"
-      # Consumption.create!( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
-
-
-
-      generate_water
-      #
-      # @solar = 1
-      # generate_solar
-
-
-    end
-
-    @event_time = @event_time + (60 *5) + rand(0..30).to_i
-
-    break if @event_time > Time.now
-
-  end
-end
-
-  #uncomment
-  create_base
-
-
-  Consumption.delete_all
-
-#  uncomment when ready start_time = Time.now - ((60 * 60 * 24)* 10)
-start_time = Time.now - 15.days
-
-
-# create gas datas
-
-@event_time = start_time
-p "start"
-
-
-# gas
-
-@event_time = start_time
-
-generate_week
+create_base
+#
+# def calculate_week
+#
+#
+#   if @event_time.hour  >=  6 && @event_time.hour  <  7
+#
+#     return @base * 3  unless   @event_time.min < 30
+#     return @base * 2.5
+#   end
+#
+#   if @event_time.hour  >=  7 && @event_time.hour  <  8
+#
+#     return  @base * 2.5
+#
+#   end
+#
+#   if @event_time.hour  >=  8 && @event_time.hour  <  9
+#
+#     return @base * 2.5 unless   @event_time.min < 30
+#     return @base * 2
+#
+#   end
+#
+#   if @event_time.hour  >=  9 && @event_time.hour  <  10
+#
+#     return  @base * 0.7  unless   @event_time.min < 30
+#     return  @base * 2
+#   end
+#
+#   if @event_time.hour  >=  10 && @event_time.hour  <  17
+#    return @base * 0.5
+#  end
+#  if @event_time.hour  >=  17 && @event_time.hour  <  18
+#
+#   return  @base * 2  unless   @event_time.min > 30
+#   return  @base * 1
+#
+# end
+# if @event_time.hour  >=  18 && @event_time.hour  <  22
+#
+#   return @base * 3
+#
+# end
+#
+# if @event_time.hour  >=  22 && @event_time.hour  <  23
+#
+#   return  @base * 1  unless   @event_time.min > 30
+#
+#   return @base * 1.5
+#
+# end
+#
+# return @base * 0.5
+#
+# end
+#
+# def calculate_weekend
+#
+#
+#
+#   if @event_time.hour  >=  9 && @event_time.hour  <  10
+#
+#     return   @base * 1.7  unless   @event_time.min > 30
+#     return  @base * 2
+#
+#   end
+#
+#   if @event_time.hour  >=  10 && @event_time.hour  <  23
+#
+#
+#     return @base * 2
+#   end
+#
+#   @result =  @base * 0.5
+#
+# end
+#
+# def generate_water
+#
+#   if @event_time.hour  >=  6 && @event_time.hour  <  8
+#
+#     @base = 0.23 + rand(0.05.. 0.09)
+#
+#     @energy = "water"
+#     Consumption.create!( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
+#
+#     return
+#
+#   end
+#
+#   def generate_solar
+#
+#     if @event_time.hour  >=  6 && @event_time.hour  <  9
+#       @solar = @solar * 1.05 + rand(0.01..1.15)
+#
+#     end
+#
+#     if @event_time.hour  >=  10 && @event_time.hour  <  12
+#       @solar = @solar * 1.10 + rand(-1.01..1.15)
+#
+#     end
+#
+#     if @event_time.hour  >=  13 && @event_time.hour  <  15
+#       @solar = @solar * 1.15 + rand(1.01..1.15)
+#
+#     end
+#
+#     if @event_time.hour  >=  16 && @event_time.hour  <  17
+#       @solar = @solar * 1.00003 + rand(-1.0001..1.015)
+#
+#     end
+#
+#     if @event_time.hour  >=  17 && @event_time.hour  <  19
+#       @solar = @solar * 1.00030 + rand(-1.01..1.15)
+#           end
+#
+#       @energy = "solar"
+#       Consumption.create!( energy: @energy, stamp:@event_time, value: @solar , alwayson: 12)
+#
+#       return
+#
+#     end
+#
+#
+#   if @event_time.hour  >=  21 && @event_time.hour  <  23
+#
+#     @base = 0.23 + rand(0.05.. 0.09)
+#     @energy = "water"
+#     Consumption.create!( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
+#
+#     return
+#   end
+#
+#     @energy = "water"
+#     Consumption.create!( energy: @energy, stamp:@event_time, value: 0 , alwayson: 12)
+# end
+#
+#
+# def generate_week
+#
+#   loop do
+#
+#     if (@event_time.sunday? || @event_time.saturday?)
+#
+#       @base = 1.04 + rand(0.05.. 0.09)
+#
+#       @energy = "gas"
+#       Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_weekend, alwayson: 12)
+#       @base = 1.12 + rand(0.05.. 0.09)
+#       @energy = "elec"
+#       # Consumption.create!( energy: @energy, stamp:@event_time, value:calculate_weekend , alwayson: 12)
+#        # @energy = "solar"
+#        # Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_weekend , alwayson: 12)
+#
+#
+#
+#      else
+#
+#
+#       @base = 1.04 + rand(0.05.. 0.09)
+#
+#       @energy = "gas"
+#       # Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_week , alwayson: 12)
+#       @base = 1.12 + rand(0.05.. 0.09)
+#       @energy = "elec"
+#       # Consumption.create!( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+#       # @energy = "solar"
+#       # Consumption.create!( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+#
+#
+#
+#       # generate_water
+#       #
+#       # @solar = 1
+#       # generate_solar
+#
+#
+#     end
+#
+#     @event_time = @event_time + (60 *5) + rand(0..30).to_i
+#
+#     break if @event_time > Time.now
+#
+#   end
+# end
+#
+#   #uncomment
+#   create_base
+#
+#
+#   Consumption.delete_all
+#
+# #  uncomment when ready start_time = Time.now - ((60 * 60 * 24)* 10)
+# start_time = Time.now - 15.days
+#
+#
+# # create gas datas
+#
+# @event_time = start_time
+# p "start"
+#
+#
+# # gas
+#
+# @event_time = start_time
+#
+# generate_week
