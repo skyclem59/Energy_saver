@@ -14,6 +14,7 @@ PROVIDERS = [
     name: 'Philips HUE',
     image: 'hue.png',
     type: 'Lampes',
+    
     link: '/auth/philips'
   }
 ]
