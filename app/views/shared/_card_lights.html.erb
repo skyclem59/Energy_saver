@@ -1,15 +1,20 @@
-<div class="card card-nav-tabs light">
+<div class="card">
   <div class="card-header card-header-primary">
     <h3><%= "Lumière" %></h3>
   </div>
-  <div class="card-body light align">
-    <% @light_devices.each do |device| %>
-    <%= link_to "#" do %>
-    <div class="">
-      <%= device.name %>
+  <div class="body-bottom">
+    <!-- <div class="">
+      <h4 id="brand-title">Smappee</h4>
+    </div> -->
+    <div class="card-body  light align">
+      <% @light_devices.each do |device| %>
+      <%= link_to "#" do %>
+      <div class="">
+        <%= device.name %>
+      </div>
+      <button id="<%= device.name.delete(' ') %>" type="button" class="btn btn-primary btn-round"></button>
+      <% end %>
+      <% end %>
     </div>
-    <button id="<%= device.name.delete(' ') %>" type="button" class="btn btn-primary btn-round"></button>
-    <% end %>
-    <% end %>
   </div>
 </div>

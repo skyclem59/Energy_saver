@@ -1,4 +1,4 @@
-<%= link_to device_path(device) do %>
+<!-- <%= link_to device_path(device) do %>
   <div class="card card-nav-tabs light">
     <div class="card-header card-header-primary">
       <h3><%= device.name %></h3>
@@ -7,4 +7,15 @@
       <%= link_to 'Regarder', actions_path, class:'btn btn-primary smappee', type:"button" %>
     </div>
   </div>
-<% end %>
+<% end %> -->
+
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h3><%= device.name %></h3>
+  </div>
+  <div class="body-bottom">
+    <div class="card-body  light align">
+      <%= link_to 'Regarder', actions_path, class:'btn btn-primary smappee', type:"button" %>
+    </div>
+  </div>
+</div>
