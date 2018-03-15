@@ -58,9 +58,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
   min-width: 280px;
-  min-height: 300px;
   background-color: #fff;
   border: 1px solid rgba(230, 230, 230, 0.1);
   border-radius: 0.25rem;
@@ -74,7 +72,11 @@
 
 // Dashboard card
  .dashboard-card {
-   margin-top: 20px;
+   margin-top: 35px;
+ }
+
+ .body-bottom {
+   min-height: 300px;
  }
 
  // card smappee
@@ -104,9 +106,10 @@
   position: absolute;
   top: 20%;
   right: 25px;
-  #brand-title {
-    color: $gray;
-  }
+}
+
+#brand-title {
+  color: $gray;
 }
 
 .logo {

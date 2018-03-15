@@ -5,13 +5,13 @@
       <%= render "shared/card_smappee", graph1: @graph_instant_elec, graph2: @graph_instant_solar, name:"Electricité", multiline: true  %>
     </div>
     <div class="col-xs-12 col-sm-3 col-md-4">
-      <%= render "shared/card_thermostat", device: @thermostat if @thermostat.present? %>
-    </div>
-    <div class="col-xs-12 col-sm-3 col-md-4">
       <%= render "shared/card_camera", device: @camera if @camera.present? %>
     </div>
     <div class="col-xs-12 col-sm-3 col-md-4">
       <%= render "shared/card_lights", devices: @light_devices if @light_devices.present? %>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-4">
+      <%= render "shared/card_thermostat", device: @thermostat if @thermostat.present? %>
     </div>
   </div>
 </div>
