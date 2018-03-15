@@ -2,11 +2,14 @@ Rails.application.routes.draw do
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   # authenticate :user, lambda { |u| u.admin } do
-    mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => '/sidekiq'
   # end
-    devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-    scope '(:locale)', locale: /fr/ do
+  get  '/auth/smappee', to: 'smappee#new', as: :new_smappee
+  post '/auth/smappee/callback', to: 'smappee#create', as: :smappee
+
+  scope '(:locale)', locale: /fr/ do
     resources :houses, only: [:show, :new, :create, :edit, :update]
     resources :devices do
       resources :types, only: :index

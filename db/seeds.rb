@@ -3,24 +3,22 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!(name: 'Luke', movie: movies.first)
+
+puts "- Drop the database"
+# Using TRUNCATE (way faster than delete_all)
+ActiveRecord::Base.connection.tables.each do |table|
+  next if table.match(/\Aschema_migrations\Z/)
+  ActiveRecord::Base.connection.execute("TRUNCATE #{table} CASCADE")
+end
 
 def create_base
-  User.delete_all
-  Device.delete_all
-  Action.delete_all
-  Type.delete_all
-
-  Brand.delete_all
-  House.delete_all
-
-
   puts "starting House seed"
 
   House.delete_all
 
-  House.create( name: 'Home sweet home')
+  House.create!( name: 'Home sweet home')
 
   puts "House seed completed"
 
@@ -28,8 +26,9 @@ def create_base
 
 
 
-  Brand.create( name: 'Google Nest')
-  Brand.create( name: 'Philips Hue')
+  Brand.create!( name: 'Google Nest')
+  Brand.create!( name: 'Philips Hue')
+  smappee_brand = Brand.create!( name: 'Smappee')
 
   puts "brand seed completed"
 
@@ -45,7 +44,7 @@ def create_base
   user = "toto"
   puts "enter password"
   pwd = "password"
-  Type.create( name: 'Thermostat', method:'nest_thermostat', key_user: user, key_password: pwd, brand_id: Brand.first[:id])
+  Type.create!( name: 'Thermostat', method:'nest_thermostat', key_user: user, key_password: pwd, brand_id: Brand.first[:id])
 
 # creation camera
 
@@ -55,7 +54,7 @@ user = "toto"
 puts "enter password"
 pwd = "password"
 
-Type.create( name: 'Camera', method:'nest_camera', key_user: user, key_password: pwd, brand_id: Brand.first[:id])
+Type.create!( name: 'Camera', method:'nest_camera', key_user: user, key_password: pwd, brand_id: Brand.first[:id])
 
 # creation lampes
 
@@ -64,7 +63,10 @@ puts "enter user"
 user = "toto"
 puts "enter password"
 pwd = "password"
-Type.create( name: 'Lampes', method:'philips_lampes', key_user: user, key_password: pwd, brand_id: Brand.last[:id])
+Type.create!( name: 'Lampes', method:'philips_lampes', key_user: user, key_password: pwd, brand_id: Brand.last[:id])
+
+puts "creation type smappee"
+Type.create!( name: 'Smappee', method:'smappee', brand: smappee_brand)
 
 
 puts "type  seed completed"
@@ -76,29 +78,29 @@ puts "starting action seed"
 
 puts "create action on nest thermostat"
 
-Action.create( name: 'Augmenter température', api_param: 'puts nest.temperature           99.00', type_id:  Type.where("types.name = 'Thermostat'").first.brand_id)
-Action.create( name: 'Baisser température', api_param: 'puts nest.temperature            00.00', type_id: Type.where("types.name = 'Thermostat'").first.brand_id)
+Action.create!( name: 'Augmenter température', api_param: 'puts nest.temperature           99.00', type_id:  Type.find_by(name: 'Thermostat').id)
+Action.create!( name: 'Baisser température', api_param: 'puts nest.temperature            00.00', type_id: Type.find_by(name: 'Thermostat').id)
 
 puts "create action on nest camera"
 
-Action.create( name: 'Afficher Camera', api_param: 'je sais pas encore' , type_id: Type.where("types.name = 'Camera'").first.brand_id)
-Action.create( name: 'Effacer Camera', api_param: 'je sais pas encore' , type_id: Type.where("types.name = 'Camera'").first.brand_id)
+Action.create!( name: 'Afficher Camera', api_param: 'je sais pas encore' , type_id: Type.find_by(name: 'Camera').id)
+Action.create!( name: 'Effacer Camera', api_param: 'je sais pas encore' , type_id: Type.find_by(name: 'Camera').id)
 
 puts "create action on philipshue"
 
-Action.create( name: 'off', api_param: '  {"on":false}' , type_id: Type.where("types.name = 'Lampes'").first.brand_id)
-Action.create( name: 'on', api_param: ' {"on":true}' , type_id: Type.where("types.name = 'Lampes'").first.brand_id)
+Action.create!( name: 'off', api_param: '  {"on":false}' , type_id: Type.find_by(name: 'Lampes').id)
+Action.create!( name: 'on', api_param: ' {"on":true}' , type_id: Type.find_by(name: 'Lampes').id)
 
 
 puts "action seed completed"
 
 puts "starting devices seed"
 
-Device.create( name: 'Thermostat Nest', type_id: Type.where("types.name = 'Thermostat'").first.id, house_id: House.first[:id])
-Device.create( name: 'Camera Nest', type_id: Type.where("types.name = 'Thermostat'").first.id, house_id: House.first[:id])
+Device.create!( name: 'Thermostat Nest', type_id: Type.find_by(name: 'Thermostat').id, house_id: House.first[:id])
+Device.create!( name: 'Camera Nest', type_id: Type.find_by(name: 'Thermostat').id, house_id: House.first[:id])
 
-Device.create( name: 'Cuisine', type_id: Type.where("types.name = 'Lampes'").first.id, house_id: House.first[:id])
-Device.create( name: 'Salon', type_id: Type.where("types.name = 'Lampes'").first.id, house_id: House.first[:id])
+Device.create!( name: 'Cuisine', type_id: Type.find_by(name: 'Lampes').id, house_id: House.first[:id])
+Device.create!( name: 'Salon', type_id: Type.find_by(name: 'Lampes').id, house_id: House.first[:id])
 
 puts "devices seed completed"
 
@@ -192,7 +194,7 @@ def generate_water
     @base = 0.23 + rand(0.05.. 0.09)
 
     @energy = "water"
-    Consumption.create( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
+    Consumption.create!( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
 
     return
 
@@ -225,7 +227,7 @@ def generate_water
           end
 
       @energy = "solar"
-      Consumption.create( energy: @energy, stamp:@event_time, value: @solar , alwayson: 12)
+      Consumption.create!( energy: @energy, stamp:@event_time, value: @solar , alwayson: 12)
 
       return
 
@@ -236,13 +238,13 @@ def generate_water
 
     @base = 0.23 + rand(0.05.. 0.09)
     @energy = "water"
-    Consumption.create( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
+    Consumption.create!( energy: @energy, stamp:@event_time, value: @base , alwayson: 12)
 
     return
   end
 
     @energy = "water"
-    Consumption.create( energy: @energy, stamp:@event_time, value: 0 , alwayson: 12)
+    Consumption.create!( energy: @energy, stamp:@event_time, value: 0 , alwayson: 12)
 end
 
 
@@ -255,12 +257,12 @@ def generate_week
       @base = 1.04 + rand(0.05.. 0.09)
 
       @energy = "gas"
-      Consumption.create( energy: @energy, stamp:@event_time, value: calculate_weekend, alwayson: 12)
+      Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_weekend, alwayson: 12)
       @base = 1.12 + rand(0.05.. 0.09)
       @energy = "elec"
-      Consumption.create( energy: @energy, stamp:@event_time, value:calculate_weekend , alwayson: 12)
+      # Consumption.create!( energy: @energy, stamp:@event_time, value:calculate_weekend , alwayson: 12)
        # @energy = "solar"
-       # Consumption.create( energy: @energy, stamp:@event_time, value: calculate_weekend , alwayson: 12)
+       # Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_weekend , alwayson: 12)
 
 
 
@@ -270,19 +272,19 @@ def generate_week
       @base = 1.04 + rand(0.05.. 0.09)
 
       @energy = "gas"
-      Consumption.create( energy: @energy, stamp:@event_time, value: calculate_week , alwayson: 12)
+      Consumption.create!( energy: @energy, stamp:@event_time, value: calculate_week , alwayson: 12)
       @base = 1.12 + rand(0.05.. 0.09)
       @energy = "elec"
-      Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      # Consumption.create!( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
       # @energy = "solar"
-      # Consumption.create( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
+      # Consumption.create!( energy: @energy, stamp:@event_time, value: rand(0.1 ..5) , alwayson: 12)
 
 
 
       generate_water
-
-      @solar = 1
-      generate_solar
+      #
+      # @solar = 1
+      # generate_solar
 
 
     end
@@ -294,8 +296,8 @@ def generate_week
   end
 end
 
-
-  # create_base uncomment
+  #uncomment
+  create_base
 
 
   Consumption.delete_all
@@ -315,6 +317,3 @@ p "start"
 @event_time = start_time
 
 generate_week
-
-
-
